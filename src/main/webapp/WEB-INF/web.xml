@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    
+    <display-name>sm</display-name>
+    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- 发生错误，页面跳转 开始 -->
+    <!--    <error-page>
+        <error-code>404</error-code> 404页面找不到 
+        <location>/common/error/404</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code> 500系统内部错误 
+        <location>/common/error/500</location>
+    </error-page>-->
+    <!--    
+    <error-page> 
+        <exception-type>java.lang.NullException</exception-type> 
+        <location>/error.jsp</location> 
+    </error-page>
+    -->
+    <!-- 发生错误，页面跳转 结束 -->
+    
+    <!-- 配置session超时时间，单位分钟 120 -->
+    <session-config>
+        <session-timeout>120</session-timeout>
+    </session-config>
+    
+    <!-- 浏览器不支持put,delete等method,由该filter将/blog?_method=delete转换为标准的http delete方法 -->  
+    <filter>  
+        <filter-name>HiddenHttpMethodFilter</filter-name>  
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>  
+    </filter>
+    <filter-mapping>  
+        <filter-name>HiddenHttpMethodFilter</filter-name>  
+        <servlet-name>SpringMVC</servlet-name>  
+    </filter-mapping> 
+    
+    <!-- 字符集过滤器  -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <!-- 强制进行转码 --> 
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- logback spring扩展 -->
+    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+    </listener>
+    <listener>
+        <!-- 开启spring加载监听器功能 -->
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <!-- Spring 刷新Introspector防止内存溢出 -->
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>  
+    </listener>
+    
+    <!--    <listener>
+         Request 作用域   scope="request" 分别是 singleton、prototype、request、session、global session
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    -->
+    <context-param>
+        <param-name>logbackConfigLocation</param-name>
+        <param-value>classpath:logback.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring.xml,classpath:spring-mybatis.xml</param-value>
+    </context-param>
+    
+    <!-- Spring MVC -->
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                <!-- 默认所对应的配置文件是WEB-INF下的{servlet-name}-servlet.xml，SpringMVC-servlet.xml -->
+                <!--classpath*:spring-*.xml-->
+                classpath:spring-mvc.xml
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    <!-- Spring MVC Mapping-->
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <!-- 这里可以用 / 但不能用 /* ，拦截了所有请求会导致静态资源无法访问，所以要在spring-mvc.xml中配置mvc:resources --> 
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    
+    
+</web-app>

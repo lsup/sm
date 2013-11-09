@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\repositories\maven\mysql\mysql-connector-java\5.1.26\mysql-connector-java-5.1.26.jar" />
+
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/egox?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root" password="egox">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--
+        The targetProject 
+        1) "MAVEN" (case sensitive), it will be set to the plugin's output directory. 
+        2) not "MAVEN", it must be set to a directory that already exists. 
+        <javaModelGenerator targetPackage="egox.sm.bean" targetProject="src/main/java">
+        here, it is setted "MAVEN", because the parameter "outputDirectory" in the pom.xml is already setted.
+        -->
+        <!-- generate Model --> 
+        <javaModelGenerator targetPackage="egox.sm.bean" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- generate xml -->  
+        <sqlMapGenerator targetPackage="egox.sm.dao.mapper" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- generate Mapper --> 
+        <javaClientGenerator type="XMLMAPPER" targetPackage="egox.sm.dao" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        
+        <table tableName="t_user" domainObjectName="User"></table>
+
+    </context>
+</generatorConfiguration>

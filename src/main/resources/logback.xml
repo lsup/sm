@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 level: TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，还有一个特俗值INHERITED或者同义词NULL，代表强制执行上级的级别。 如果未设置此属性，那么当前loger将会继承上级的级别。
-
 -->
-
-
-
-
 
 <!--
 scan: 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
 scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。
 debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 -->
-<configuration scan="true" scanPeriod="60000" debug="false">
+<configuration scan="false" scanPeriod="60000" debug="false">
     <!-- 控制台 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <Encoding>UTF-8</Encoding>
@@ -21,13 +16,14 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
             <pattern>%d{HH:mm:ss} %-5level %logger - %msg%n</pattern>
         </encoder>
     </appender>
+    
     <!-- 出错日志 appender  -->
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 按天回滚 daily -->
             <!-- log.dir 在maven profile里配置 -->
-            <fileNamePattern>${log.dir}/es-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log.dir}/sm-error-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 日志最大的历史 60天 -->
             <maxHistory>60</maxHistory>
         </rollingPolicy>
@@ -35,17 +31,18 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
             <pattern>%d{HH:mm:ss} %-5level %logger - %msg%n</pattern>
         </encoder>
     </appender>
+    
     <!-- 访问日志 appender  -->
     <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 按天回滚 daily -->
-            <fileNamePattern>${log.dir}/es-access-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log.dir}/sm-access-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 日志最大的历史 60天 -->
             <maxHistory>60</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss} %-5level %logger - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -54,50 +51,42 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
         <Encoding>UTF-8</Encoding>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 按天回滚 daily -->
-            <fileNamePattern>${log.dir}/es-sys-user-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log.dir}/sm-sys-user-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 日志最大的历史 60天 -->
             <maxHistory>60</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss} %-5level %logger - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <root level="INFO">
+    <root level="WARN">
         <appender-ref ref="STDOUT" /> 
     </root>
 
-    <!--<logger name="org.apache" level="debug">-->
-    <!--<appender-ref ref="STDOUT"/>-->
-    <!--</logger>-->
-
     <!--错误日志-->
-    <logger name="es-error" level="info">
+    <logger name="sm-error" level="info">
         <appender-ref ref="ERROR"/>
     </logger>
     <!--访问日志-->
-    <logger name="es-access" level="info">
+    <logger name="sm-access" level="info">
         <appender-ref ref="ACCESS"/>
     </logger>
     <!--系统用户操作日志-->
-    <logger name="es-sys-user" level="info">
+    <logger name="sm-sys-user" level="info">
         <appender-ref ref="SYS-USER"/>
     </logger>
 
     <!-- cache -->
-    <logger name="com.sishuok.es.extra.aop" level="info">
+<!--    <logger name="com.sishuok.es.extra.aop" level="info">
         <appender-ref ref="STDOUT"/>
-    </logger>
-    
-    
-    
+    </logger>-->
     
     <logger name="org.mybatis.generator" level="DEBUG"/>
     <logger name="org.springframework.web.bind.annotation.support.HandlerMethodInvoker" level="DEBUG"/>
     <logger name="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" level="DEBUG"/>
     <logger name="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" level="DEBUG"/>
     <logger name="org.springframework.web.servlet.view.JstlView" level="DEBUG"/>
-    <logger name="egox" level="INFO"/>
     <logger name="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" level="DEBUG"/>
     <logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG"/>
     

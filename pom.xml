@@ -275,14 +275,14 @@
                     <configurationFile>${basedir}/src/main/resources/mybatis-generator.xml</configurationFile>
                     <outputDirectory>${basedir}/src/main/java</outputDirectory>
                 </configuration>
-                <executions>
+<!--                <executions>
                     <execution>
                         <id>Generate MyBatis Artifacts</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

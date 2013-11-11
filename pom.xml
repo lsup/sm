@@ -14,6 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.4.RELEASE</spring.version>
         <slf4j.version>1.7.5</slf4j.version>
+        <dao.target.dir>src/main/java/egox/dao</dao.target.dir>
     </properties>
 
     <dependencies>

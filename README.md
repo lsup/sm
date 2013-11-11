@@ -3,7 +3,7 @@ sm
 
 javaEE开发脚手架
 
-### 使用到的技术：
+## 使用到的技术：
 * Spring
 * Spring MVC
 * MyBatis
@@ -12,7 +12,8 @@ javaEE开发脚手架
 * druid
 * servlet 3.0
 * mariaDB 5.5
-### 计划
+
+## 计划
 * ehcache 
 * apache quartz
 * velocity

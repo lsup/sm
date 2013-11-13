@@ -16,7 +16,7 @@
     <!-- **************** druid 监控连接池配置 ***************** https://github.com/alibaba/druid/wiki -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${druid.url}" />
+        <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
         

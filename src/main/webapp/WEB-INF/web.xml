@@ -3,25 +3,31 @@
     
     <display-name>sm</display-name>
     
-    <welcome-file-list>
+<!--    <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
+    </welcome-file-list>-->
 
     <!-- 发生错误，页面跳转 开始 -->
-    <!--    <error-page>
-        <error-code>404</error-code> 404页面找不到 
-        <location>/common/error/404</location>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/jsp/common/error/403.jsp</location>
     </error-page>
     <error-page>
-        <error-code>500</error-code> 500系统内部错误 
-        <location>/common/error/500</location>
-    </error-page>-->
-    <!--    
-    <error-page> 
-        <exception-type>java.lang.NullException</exception-type> 
-        <location>/error.jsp</location> 
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/common/error/404.jsp</location>
     </error-page>
-    -->
+    <error-page>
+        <error-code>405</error-code>
+        <location>/WEB-INF/jsp/common/error/405.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/common/error/500.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>503</error-code>
+        <location>/WEB-INF/jsp/common/error/503.jsp</location>
+    </error-page>
     <!-- 发生错误，页面跳转 结束 -->
     
     <!-- 配置session超时时间，单位分钟 120 -->

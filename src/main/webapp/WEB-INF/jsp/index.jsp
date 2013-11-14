@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Main Page</title>
+        <link href="${pageContext.request.contextPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
         <h1>This is the default page!</h1>

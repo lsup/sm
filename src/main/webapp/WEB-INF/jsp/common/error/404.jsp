@@ -8,8 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <!-- Le styles -->
-        <link href="${pageContext.request.contextPath}/static/css/bootstrap/bootstrap.css" rel="stylesheet" />
-        <link href="${pageContext.request.contextPath}/static/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/static/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/static/css/icons.css" rel="stylesheet" type="text/css" />
 
         <!-- Main stylesheets -->
@@ -20,12 +19,6 @@
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <!-- Le fav and touch icons -->
-        <link rel="shortcut icon" href="images/favicon.ico" />
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144-precomposed.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png" />
-        <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
 
     </head>
 
@@ -52,7 +45,7 @@
         <!-- Le javascript
         ================================================== -->
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/plugins/bootstrap/bootstrap.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/plugins/bootstrap/js/bootstrap.min.js"></script>
 
         <script type="text/javascript">
             // document ready function

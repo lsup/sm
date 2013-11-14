@@ -2,10 +2,6 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     
     <display-name>sm</display-name>
-    
-<!--    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>-->
 
     <!-- 发生错误，页面跳转 开始 -->
     <error-page>
@@ -64,6 +60,12 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     
+    <listener>
+        <!-- 防止发生java.beans.Introspector内存泄露,应将它配置在ContextLoaderListener的前面 -->  
+        <!-- 详细描述见http://blog.csdn.net/jadyer/article/details/11991457 -->  
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>  
+    </listener>
+    
     <!-- logback spring扩展 -->
     <listener>
         <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
@@ -72,10 +74,7 @@
         <!-- 开启spring加载监听器功能 -->
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <listener>
-        <!-- Spring 刷新Introspector防止内存溢出 -->
-        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>  
-    </listener>
+    
     
     <!--    <listener>
          Request 作用域   scope="request" 分别是 singleton、prototype、request、session、global session
@@ -90,6 +89,55 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring.xml,classpath:spring-mybatis.xml</param-value>
     </context-param>
+    
+    <!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->  
+    <!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->  
+    <!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->  
+    <!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面),以保证它是过滤器链中第一个起作用的 -->  
+<!--    <filter>  
+        <filter-name>shiroFilter</filter-name>  
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+        <init-param>  
+             该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理   
+            <param-name>targetFilterLifecycle</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>shiroFilter</filter-name>  
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher> 
+    </filter-mapping>-->
+    
+    <!--druid 监控-->
+    <filter>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>exclusions</param-name>
+            <param-value>/static/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>principalSessionName</param-name>
+            <param-value>username</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- druid监控 -->
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/admin/monitor/druid/*</url-pattern>
+    </servlet-mapping>
+    
     
     <!-- Spring MVC -->
     <servlet>

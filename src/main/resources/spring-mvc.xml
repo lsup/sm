@@ -12,9 +12,8 @@
                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
 
-    <mvc:view-controller path="/" view-name="welcome" />
-    <mvc:view-controller path="/home" view-name="welcome" />
-    <mvc:view-controller path="/denied" view-name="denied" />
+    <mvc:view-controller path="/" view-name="index" />
+    <mvc:view-controller path="/admin" view-name="admin/login" />
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
     <!-- order=2147483646 -->
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/" cache-period="31556926" />
@@ -25,6 +24,20 @@
     <context:component-scan base-package="egox.sm.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
+    
+    <!-- Configures Tiles -->
+<!--    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/tiles.xml</value>
+            </list>
+        </property>
+    </bean>-->
+    
+    <!-- Resolves messages to support internationalization -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/messages/global" />
+    </bean>
     
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="ignoreAcceptHeader" value="true" />
@@ -51,6 +64,10 @@
                 <!-- for application/json -->  
                 <bean class="egox.ext.fastjson.FastJsonJsonView" />
                 <!--<bean class="com.alibaba.fastjson.support.spring.FastJsonJsonView" />-->
+                
+<!--                <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+                    <property name="contentType" value="text/html" />
+                </bean>-->
                 
                 <!-- for application/xml -->  
                 <bean class="org.springframework.web.servlet.view.xml.MarshallingView" >  

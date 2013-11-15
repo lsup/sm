@@ -1,4 +1,4 @@
-package egox.temp;
+package egox.shiro;
 
 import egox.sm.bean.User;
 import java.util.HashSet;
@@ -13,9 +13,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.springframework.stereotype.Service;
 
-@Service("monitorRealm")
 public class MonitorRealm extends AuthorizingRealm {
     /*
      * @Autowired UserService userService;
@@ -27,12 +25,10 @@ public class MonitorRealm extends AuthorizingRealm {
 
     public MonitorRealm() {
         super();
-
     }
 
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(
-            PrincipalCollection principals) {
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         /* 这里编写授权代码 */
         Set<String> roleNames = new HashSet<String>();
         Set<String> permissions = new HashSet<String>();
@@ -47,8 +43,7 @@ public class MonitorRealm extends AuthorizingRealm {
     }
 
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(
-            AuthenticationToken authcToken) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         /* 这里编写认证代码 */
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 //		User user = securityApplication.findby(upToken.getUsername());

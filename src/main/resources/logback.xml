@@ -91,6 +91,9 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
     <logger name="org.springframework.web.servlet.view.InternalResourceViewResolver" level="DEBUG"/>
     <logger name="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" level="DEBUG"/>
     <logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG"/>
+    <logger name="org.apache.shiro" level="DEBUG"/>
+    
+    
     
     
 </configuration>

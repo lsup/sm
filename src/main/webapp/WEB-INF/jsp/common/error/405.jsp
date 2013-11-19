@@ -1,37 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Supr admin</title>
-    <meta name="author" content="SuggeElson" />
-    <meta name="description" content="Supr admin template - new premium responsive admin template. This template is designed to help you build the site administration without losing valuable time.Template contains all the important functions which must have one backend system.Build on great twitter boostrap framework" />
-    <meta name="keywords" content="admin, admin template, admin theme, responsive, responsive admin, responsive admin template, responsive theme, themeforest, 960 grid system, grid, grid theme, liquid, masonry, jquery, administration, administration template, administration theme, mobile, touch , responsive layout, boostrap, twitter boostrap" />
-    <meta name="application-name" content="Supr admin template" />
+    
+    <title>Super Magic</title>
+    <meta name="author" content="Gavin" />
+    <meta name="description" content="Super Magic" />
+    <meta name="keywords" content="Super Magic" />
+    <meta name="application-name" content="Super Magic" />
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Le styles -->
-    <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="resources/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="resources/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/static/css/icons.css" rel="stylesheet" type="text/css" />
 
     <!-- Main stylesheets -->
-    <link href="resources/css/main.css" rel="stylesheet" type="text/css" /> 
+    <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" /> 
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <!--[if lt IE 9]>
+        <link type="text/css" href="css/ie.css" rel="stylesheet" />
+    <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-57-precomposed.png" />
 
-    </head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
       
     <body class="errorPage">
 
@@ -45,8 +49,8 @@
             <h2 class="center">Something is wrong here. Method not allowed!</h2>
 
             <div class="center">
-                <a href="javascript: history.go(-1)" class="btn" style="margin-right:10px;"><span class="icon16 icomoon-icon-arrow-left-10"></span>Go back</a>
-                <a href="dashboard.html" class="btn"><span class="icon16 icomoon-icon-screen"></span>Dashboard</a>
+                <a href="javascript: history.go(-1)" class="btn" style="margin-right:10px;"><span class="icon16 typ-icon-back"></span>Go back</a>
+                <a href="dashboard.html" class="btn"><span class="icon16 cut-icon-screen"></span>Dashboard</a>
             </div>
 
         </div>
@@ -55,8 +59,8 @@
 
     <!-- Le javascript
     ================================================== -->
-    <script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.js"></script>   
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap/bootstrap.js"></script>  
 
      <script type="text/javascript">
         // document ready function

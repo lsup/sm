@@ -2,6 +2,7 @@ package egox.sm.controller;
 
 import egox.sm.bean.User;
 import egox.sm.service.UserService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,11 +29,12 @@ public class UserController extends AbstractController {
     @Autowired
     private HttpServletRequest request;
 
-//    @RequestMapping(value = "users", method = RequestMethod.GET)
-//    public List<User> getAllUsers() {
-//        logger.debug("getAllUsers method run! ");
-//        return userService.getAllUsers();
-//    }
+    @RequestMapping(value = "users", method = RequestMethod.GET)
+    public List<User> getAllUsers() {
+        logger.debug("getAllUsers method run! ");
+        return userService.getAllUsers();
+    }
+
     @RequestMapping(value = "user/{userId}", method = RequestMethod.GET)
     public User getUserById(@PathVariable("userId") Long userId) {
         logger.error("getUserById method run! ");

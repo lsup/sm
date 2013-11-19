@@ -28,7 +28,7 @@
         </javaModelGenerator>
 
         <!-- generate xml -->  
-        <sqlMapGenerator targetPackage="egox.sm.dao.mapper" targetProject="MAVEN">
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 

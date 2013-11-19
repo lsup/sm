@@ -87,8 +87,8 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring.xml</param-value>
-        <!--<param-value>classpath:spring.xml,classpath:spring-mybatis.xml</param-value>-->
+        <!--<param-value>classpath:spring.xml</param-value>-->
+        <param-value>classpath:spring.xml,classpath:spring-mybatis.xml</param-value>
     </context-param>
     
     <!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->  

@@ -27,18 +27,12 @@ public class SecurityController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET, value = "login")
     public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-//        model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
-        return modelAndView;
+        return new ModelAndView("login");
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "login")
     public ModelAndView fail() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("welcome");
-//        model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
-        return modelAndView;
+        return new ModelAndView("login");
     }
 
     @RequestMapping("/logout")

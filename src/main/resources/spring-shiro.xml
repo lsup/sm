@@ -13,6 +13,7 @@
         <property name="unauthorizedUrl" value="/unauthorized" />
         <property name="filterChainDefinitions">
             <value>
+                /users = anon
                 /logout = logout
                 <!--/** = roles[admin]-->
                 /static/** = anon

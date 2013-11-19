@@ -113,8 +113,8 @@
     
     <!-- MyBatis Mapper.XMl 配置 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="mapperLocations"  value="classpath*:egox/sm/dao/mapper/**/*.xml"/> 
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/**/*.xml"/> 
     </bean>
     
     <!-- ***************事务配置************** -->

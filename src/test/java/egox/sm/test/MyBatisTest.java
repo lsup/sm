@@ -1,8 +1,6 @@
 package egox.sm.test;
 
-import egox.sm.bean.User;
 import egox.sm.service.UserService;
-import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,7 @@ public class MyBatisTest {
 //    }
     @Test
     public void test() {
-        List<User> users = userService.getAllUsers();
-        System.out.println(users.size());
+//        List<User> users = userService.getAllUsers();
+//        System.out.println(users.size());
     }
 }

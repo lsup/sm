@@ -13,8 +13,6 @@
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
 
     <mvc:view-controller path="/" view-name="index" />
-    <mvc:view-controller path="/admin" view-name="admin/login" />
-    <mvc:view-controller path="/admin/login" view-name="admin/login" />
     
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
     <!-- order=2147483646 -->

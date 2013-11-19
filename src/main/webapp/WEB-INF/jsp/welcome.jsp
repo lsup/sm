@@ -1,11 +1,14 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<h1>
-	<fmt:message key="welcome.title" />
-</h1>
-<p>
-	<fmt:message key="welcome.caption" />
-</p>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
 
-<!-- Short page - ensure some space before the footer -->
-<div style="padding-top:50pt"></div>
-
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Main Page</title>
+        <link href="${pageContext.request.contextPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+    </body>
+</html>

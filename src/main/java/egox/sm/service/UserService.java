@@ -1,7 +1,6 @@
 package egox.sm.service;
 
 import egox.sm.bean.User;
-import java.util.List;
 
 /**
  *
@@ -9,7 +8,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    List<User> getAllUsers();
+    User getUserById(Long id);
 
-    User getUserById(long id);
+    User getUserByUsername(String username);
 }

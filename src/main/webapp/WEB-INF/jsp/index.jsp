@@ -9,6 +9,6 @@
         <link href="${pageContext.request.contextPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>This is the default page!</h1>
+        <h1>This is the index page!</h1>
     </body>
 </html>

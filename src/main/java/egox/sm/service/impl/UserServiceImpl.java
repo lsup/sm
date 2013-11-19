@@ -1,6 +1,7 @@
 package egox.sm.service.impl;
 
 import egox.sm.bean.User;
+import egox.sm.bean.UserExample;
 import egox.sm.dao.UserMapper;
 import egox.sm.service.UserService;
 import java.util.List;
@@ -18,13 +19,20 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> getAllUsers() {
-        return userMapper.selectByExample(null);
+    public User getUserById(Long id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public User getUserById(long id) {
-        return userMapper.selectByPrimaryKey(id);
+    public User getUserByUsername(String username) {
+        User user = null;
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(username);
+        List<User> users = userMapper.selectByExample(userExample);
+        if (users != null && users.size() == 1) {
+            user = users.get(0);
+        }
+        return user;
     }
 
 }

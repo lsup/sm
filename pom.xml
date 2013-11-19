@@ -6,14 +6,13 @@
     <artifactId>sm</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
-    <name>sm</name>
+    <name>Super Magic</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>3.2.4.RELEASE</spring.version>
-        <slf4j.version>1.7.5</slf4j.version>
+        <spring.version>3.2.5.RELEASE</spring.version>
+        <shiro.version>1.2.2</shiro.version>
     </properties>
 
     <dependencies>
@@ -105,7 +104,7 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.7.3</version>
+            <version>1.7.4</version>
         </dependency>
         <!-- other 结束 -->
         
@@ -155,7 +154,7 @@
             <version>3.0.1</version>  
         </dependency>  -->
         <!-- apache tiles 结束 -->
-        <dependency>
+        <!--        <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
             <version>3.0.1</version>
@@ -170,7 +169,7 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>3.9</version>
-        </dependency>
+        </dependency>-->
         
         
         <!-- 日志 开始 -->
@@ -246,24 +245,24 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.2.2</version>
+            <version>${shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
-            <version>1.2.2</version>
+            <version>${shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
-            <version>1.2.2</version>
+            <version>${shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
-            <version>1.2.2</version>
+            <version>${shiro.version}</version>
         </dependency>
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-core</artifactId>
             <version>2.6.6</version>
@@ -287,6 +286,21 @@
     
     <build>
         <plugins>
+<!--            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.26</version>
+                <configuration>
+                    <contextPath>/sm</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8086</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                </configuration>
+            </plugin>-->
+            
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -297,7 +311,7 @@
                     <configurationFile>${basedir}/src/main/resources/mybatis-generator.xml</configurationFile>
                     <outputDirectory>${basedir}/src/main/java</outputDirectory>
                 </configuration>
-<!--                <executions>
+                <!--                <executions>
                     <execution>
                         <id>Generate MyBatis Artifacts</id>
                         <goals>
@@ -353,5 +367,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

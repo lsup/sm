@@ -24,7 +24,7 @@
         <property name="filters" value="stat" />
 		
         <!-- 配置初始化大小、最小、最大 -->
-        <property name="maxActive" value="${druid.maxActive}" />
+        <property name="maxActive" value="${jdbc.maxActive}" />
         <!-- 初始化连接:连接池启动时创建的初始化连接数量 -->
         <property name="initialSize" value="1" />
         <!-- 最小空闲连接:连接池中容许保持空闲状态的最小连接数量,低于这个数量将创建新的连接,如果设置为0则不创建-->

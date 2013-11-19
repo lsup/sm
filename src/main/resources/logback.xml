@@ -9,6 +9,7 @@ scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没�
 debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 -->
 <configuration scan="false" scanPeriod="60000" debug="false">
+
     <!-- 控制台 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <Encoding>UTF-8</Encoding>

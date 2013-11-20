@@ -24,9 +24,6 @@ public class MonitorRealm extends AuthorizingRealm {
 
     @Autowired
     RoleService roleService;
-    /*
-     * @Autowired LoginLogService loginLogService;
-     */
 
     public MonitorRealm() {
         super();

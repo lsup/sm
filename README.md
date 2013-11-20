@@ -21,6 +21,6 @@ javaEE开发脚手架
 * jquery
 * bootstrap
 * shiro
-* apache tails or sitemash
+* apache tails or sitemesh
 
 

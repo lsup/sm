@@ -147,8 +147,15 @@
         </dependency>
         <!-- 文件上传 结束 -->   
         
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+            
+        
         <!-- apache tiles 开始 -->  
-        <!--        <dependency>  
+        <!--                <dependency>  
             <groupId>org.apache.tiles</groupId>  
             <artifactId>tiles-extras</artifactId>  
             <version>3.0.1</version>  
@@ -286,7 +293,7 @@
     
     <build>
         <plugins>
-<!--            <plugin>
+            <!--            <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.1.26</version>

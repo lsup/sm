@@ -2,6 +2,8 @@
 <decorators defaultdir="/WEB-INF/layouts/">
     <excludes>
         <pattern>/login</pattern>
+        <pattern>*.json</pattern>
+        <pattern>*.xml</pattern>
         <!--<pattern>/api/*</pattern>-->
     </excludes>
 	

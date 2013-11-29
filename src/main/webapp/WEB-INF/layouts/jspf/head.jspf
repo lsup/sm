@@ -1,7 +1,7 @@
 <meta name="author" content="Gavin" />
-<meta name="description" content="Super Magic" />
-<meta name="keywords" content="Super Magic" />
-<meta name="application-name" content="Super Magic" />
+<meta name="description" content="Super Mario" />
+<meta name="keywords" content="Super Mario" />
+<meta name="application-name" content="Super Mario" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -54,6 +54,4 @@
 <script src="static/plugins/respond.min.js"></script>
 
 <%@include file="/WEB-INF/layouts/jspf/import-uniform.jspf"%>
-<!--
-<link href="static/plugins/uniform/css/uniform.default.css" rel="stylesheet" />
-<script src="static/plugins/uniform/jquery.uniform.js"></script>-->
+<%@include file="/WEB-INF/layouts/jspf/import-qtip.jspf"%>

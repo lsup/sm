@@ -1,12 +1,11 @@
 // make console.log safe to use
-window.console || (console = {log: function() {
-    }});
+window.console || (console = {log: function() {}});
 
 //------------- Options for Supr - admin tempalte -------------//
 var supr_Options = {
     fixedWidth: false, //activate fixed version with true
     rtl: false //activate rtl version with true
-}
+};
 
 //window resize events
 $(window).resize(function() {
@@ -236,7 +235,7 @@ $(document).ready(function() {
                 $this.children('a').attr('title', 'Show Left Sidebar');
             }
             $('#sidebarbg').toggleClass('hided');
-            $('#sidebar').toggleClass('hided')
+            $('#sidebar').toggleClass('hided');
             $('.collapseBtn.leftbar').toggleClass('top shadow');
             //expand content
 
@@ -260,7 +259,7 @@ $(document).ready(function() {
             } else {
                 //hide sidebar
                 $this.addClass('hide-sidebar');
-                $this.children('a').attr('title', 'Show Right Sidebar')
+                $this.children('a').attr('title', 'Show Right Sidebar');
             }
             $('#sidebarbg-right').toggleClass('hided');
             $('#sidebar-right').toggleClass('hided');
@@ -273,7 +272,7 @@ $(document).ready(function() {
             if ($('#content-two').length) {
                 $('#content-two').toggleClass('hided-right');
             }
-            $('.collapseBtn.rightbar').toggleClass('top shadow')
+            $('.collapseBtn.rightbar').toggleClass('top shadow');
         }
     });
 
@@ -294,7 +293,7 @@ $(document).ready(function() {
             //minimize content
             $this.removeClass('minimize').addClass('maximize');
             $this.parent('div').addClass('min');
-            cont = $this.parent('div').next('div.panel-body')
+            cont = $this.parent('div').next('div.panel-body');
             cont.slideUp(500, 'easeOutExpo'); //change effect if you want :)
 
         } else
@@ -306,7 +305,7 @@ $(document).ready(function() {
             cont.slideDown(500, 'easeInExpo'); //change effect if you want :)
         }
 
-    })
+    });
 
     //show minimize and maximize icons
     widget.hover(function() {

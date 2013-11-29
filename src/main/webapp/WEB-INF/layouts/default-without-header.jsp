@@ -9,8 +9,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <base href=" <%=basePath%>" />
-        <title><sitemesh:title default="Super Magic" /></title>
-        <%@ include file="/WEB-INF/layouts/head.jsp"%>
+        <title><sitemesh:title default="Super Mario" /></title>
+        <%@ include file="/WEB-INF/layouts/jspf/head.jspf"%>
         <sitemesh:head/>
     </head>
     <sitemesh:body/>

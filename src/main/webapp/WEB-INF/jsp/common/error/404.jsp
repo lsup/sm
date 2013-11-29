@@ -3,11 +3,11 @@
 <html>
     <head>
     
-    <title>Super Magic</title>
+    <title>Super Mario</title>
     <meta name="author" content="Gavin" />
-    <meta name="description" content="Super Magic" />
-    <meta name="keywords" content="Super Magic" />
-    <meta name="application-name" content="Super Magic" />
+    <meta name="description" content="Super Mario" />
+    <meta name="keywords" content="Super Mario" />
+    <meta name="application-name" content="Super Mario" />
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

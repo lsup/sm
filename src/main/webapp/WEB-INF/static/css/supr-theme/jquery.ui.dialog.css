@@ -10,7 +10,7 @@
 .ui-dialog { 
 	position: absolute; 
 	padding: 0;
-	width: 60% !important; 
+	width: 60%; 
 	min-width: 300px; 
 	overflow: hidden; 
 }

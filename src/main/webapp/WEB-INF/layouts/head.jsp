@@ -1,43 +1,41 @@
-
 <meta name="author" content="Gavin" />
 <meta name="description" content="Super Magic" />
 <meta name="keywords" content="Super Magic" />
 <meta name="application-name" content="Super Magic" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <!-- Mobile Specific Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Force IE9 to render in normal mode -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<link href="static/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-<link href="static/css/bootstrap/bootstrap-responsive.min.css" rel="stylesheet" />
+<!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+<meta name="msapplication-TileColor" content="#3399cc"/> 
+
+<!-- Core stylesheets do not remove -->
+<link href="static/css/bootstrap/bootstrap.css" rel="stylesheet" />
+<link href="static/css/bootstrap/bootstrap-theme.css" rel="stylesheet" />
 <link href="static/css/supr-theme/jquery.ui.supr.css" rel="stylesheet" />
 <link href="static/css/icons.css" rel="stylesheet" />
 
-<!-- Plugin stylesheets -->
-<link href="static/plugins/qtip/jquery.qtip.css" rel="stylesheet" />
-<link href="static/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" />
-<link href="static/plugins/jpages/jPages.css" rel="stylesheet" />
-<link href="static/plugins/prettify/prettify.css" rel="stylesheet" />
-<link href="static/plugins/inputlimiter/jquery.inputlimiter.css" rel="stylesheet" />
-<link href="static/plugins/ibutton/jquery.ibutton.css" rel="stylesheet" />
-<link href="static/plugins/uniform/uniform.default.css" rel="stylesheet" />
-<link href="static/plugins/color-picker/color-picker.css" rel="stylesheet" />
-<link href="static/plugins/select/select2.css" rel="stylesheet" />
-<link href="static/plugins/validate/validate.css" rel="stylesheet" />
-<link href="static/plugins/pnotify/jquery.pnotify.default.css" rel="stylesheet" />
-<link href="static/plugins/pretty-photo/prettyPhoto.css" rel="stylesheet" />
-<link href="static/plugins/smartWizzard/smart_wizard.css" rel="stylesheet" />
-<link href="static/plugins/dataTables/jquery.dataTables.css" rel="stylesheet" />
-<link href="static/plugins/elfinder/elfinder.css" rel="stylesheet" />
-<link href="static/plugins/plupload/jquery.ui.plupload/css/jquery.ui.plupload.css" rel="stylesheet" />
-<link href="static/plugins/search/tipuesearch.css" rel="stylesheet" />
 
 <!-- Main stylesheets -->
-<link href="static/css/main.css" rel="stylesheet" /> 
+<link href="static/css/main.css" rel="stylesheet"/> 
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!-- Custom stylesheets ( Put your own changes here ) -->
+<link href="static/css/custom.css" rel="stylesheet"/> 
+
+<!--[if IE 8]>
+    <link href="static/css/ie8.css" rel="stylesheet"/>
+    <![endif]-->
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-  <script src="static/js/html5.js"></script>
+  ExplorerCanvas supports HTML5 canvas
+  <script src="static/js/libs/excanvas.min.js"></script>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="static/js/libs/respond.min.js"></script>
 <![endif]-->
 
 <!-- fav and touch icons -->
@@ -47,11 +45,15 @@
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/apple-touch-icon-72-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" href="static/images/apple-touch-icon-57-precomposed.png" />
 
+<!-- Important plugins put in all pages -->
+<script src="static/js/jquery-1.10.2.min.js"></script>
+<script src="static/js/jquery-ui.min.js"></script>
+<!--<script src="static/js/jquery-migrate-1.2.1.min.js"></script>-->
+<script src="static/js/bootstrap.js"></script>
+<script src="static/plugins/jquery.mousewheel.js"></script>
+<script src="static/plugins/respond.min.js"></script>
 
-
-<!-- Le javascript
-================================================== -->
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/js/bootstrap/bootstrap.js"></script>  
-<script type="text/javascript" src="static/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="static/js/jquery.mousewheel.js"></script>
+<%@include file="/WEB-INF/layouts/jspf/import-uniform.jspf"%>
+<!--
+<link href="static/plugins/uniform/css/uniform.default.css" rel="stylesheet" />
+<script src="static/plugins/uniform/jquery.uniform.js"></script>-->

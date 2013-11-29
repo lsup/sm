@@ -25,7 +25,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!--[if lt IE 9]>
-        <link type="text/css" href="css/ie.css" rel="stylesheet" />
+        <link type="text/css" href="static/css/ie.css" rel="stylesheet" />
     <![endif]-->
 
     <!-- Le fav and touch icons -->
@@ -60,7 +60,7 @@
     <!-- Le javascript
     ================================================== -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>  
 
      <script type="text/javascript">
         // document ready function

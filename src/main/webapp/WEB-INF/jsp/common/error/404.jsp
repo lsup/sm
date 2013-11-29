@@ -13,27 +13,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Le styles -->
-    <link href="${pageContext.request.contextPath}/static/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/static/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/static/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="static/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="static/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="static/css/icons.css" rel="stylesheet" type="text/css" />
 
     <!-- Main stylesheets -->
-    <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" /> 
+    <link href="static/css/main.css" rel="stylesheet" type="text/css" /> 
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!--[if lt IE 9]>
-        <link type="text/css" href="css/ie.css" rel="stylesheet" />
+        <link type="text/css" href="static/css/ie.css" rel="stylesheet" />
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/images/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-144-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-114-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-72-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/static/images/apple-touch-icon-57-precomposed.png" />
+    <link rel="shortcut icon" href="static/images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="static/images/apple-touch-icon-57-precomposed.png" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
       
@@ -60,7 +60,7 @@
     <!-- Le javascript
     ================================================== -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>  
 
      <script type="text/javascript">
         // document ready function

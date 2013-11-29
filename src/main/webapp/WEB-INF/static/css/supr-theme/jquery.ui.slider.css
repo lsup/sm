@@ -27,7 +27,7 @@
 	height: 6px;
 	font-size: .7em;
 	border: 1px solid #2b99b5;
-	box-shadow: 0 1px 0 #63d8f6 inset;
+	panel-shadow: 0 1px 0 #63d8f6 inset;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
@@ -48,7 +48,7 @@
 	height: 5px;
 	background: #e1e1e1;
 	border: 1px solid #c4c4c4;
-	box-shadow: 0 1px 0 white, 0 1px 0 #d4d4d4 inset;
+	panel-shadow: 0 1px 0 white, 0 1px 0 #d4d4d4 inset;
 	clear: both;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -63,7 +63,7 @@
 	height: 100px;
 	width: 5px;
 	background: #e1e1e1;
-	box-shadow: 0 1px 0 white, 0 1px 0 #d4d4d4 inset;
+	panel-shadow: 0 1px 0 white, 0 1px 0 #d4d4d4 inset;
 }
 .ui-slider-vertical .ui-slider-handle { 
 	left: -5px;

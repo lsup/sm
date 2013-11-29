@@ -17,13 +17,13 @@
         <!-- loading animation -->
         <div id="qLoverlay"></div>
         <div id="qLbar"></div>
+
         <%@ include file="/WEB-INF/layouts/header.jsp"%>
+
         <div id="wrapper">
-            <!--Responsive navigation button-->  
-            <div class="resBtn">
-                <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
-            </div>
+
             <%@ include file="/WEB-INF/layouts/sidebar.jsp"%>
+
             <!--Body content-->
             <div id="content" class="clearfix">
                 <div class="contentwrapper"><!--Content wrapper-->

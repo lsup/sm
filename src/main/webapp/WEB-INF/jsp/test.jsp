@@ -4,7 +4,6 @@
 </head>
 <body>
     <div style="background: red;">
-        this is the test page!
-        <a href="users">test</a>
+        this is the main page!
     </div>
 </body>

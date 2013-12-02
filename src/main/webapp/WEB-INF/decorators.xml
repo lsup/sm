@@ -6,12 +6,13 @@
         <!--<pattern>/api/*</pattern>-->
     </excludes>
 	
-    <decorator name="default" page="default.jsp">
-        <pattern>/*</pattern>
-    </decorator>
-    
     <decorator name="defaultWithoutHeader" page="default-without-header.jsp">
         <pattern>/login</pattern>
+        <pattern>/*/error/*</pattern>
+    </decorator>
+    
+    <decorator name="default" page="default.jsp">
+        <pattern>/*</pattern>
     </decorator>
     
 </decorators>

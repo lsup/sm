@@ -13,5 +13,7 @@
         <%@ include file="/WEB-INF/layouts/jspf/head.jspf"%>
         <sitemesh:head/>
     </head>
-    <sitemesh:body/>
+    <body>
+        <sitemesh:body/>
+    </body>
 </html>

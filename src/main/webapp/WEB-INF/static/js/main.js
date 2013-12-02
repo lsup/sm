@@ -324,23 +324,23 @@ $(document).ready(function() {
     });
 
     //------------- Search forms  submit handler  -------------//
-    if ($('#tipue_search_input').length) {
-        $('#tipue_search_input').tipuesearch({
-            'show': 5
-        });
-        $('#search-form').submit(function() {
-            return false;
-        });
-
-        //make custom redirect for search form in .heading
-        $('#searchform').submit(function() {
-            var sText = $('.top-search').val();
-            var sAction = $(this).attr('action');
-            var sUrl = sAction + '?q=' + sText;
-            $(location).attr('href', sUrl);
-            return false;
-        });
-    }
+//    if ($('#tipue_search_input').length) {
+//        $('#tipue_search_input').tipuesearch({
+//            'show': 5
+//        });
+//        $('#search-form').submit(function() {
+//            return false;
+//        });
+//
+//        //make custom redirect for search form in .heading
+//        $('#searchform').submit(function() {
+//            var sText = $('.top-search').val();
+//            var sAction = $(this).attr('action');
+//            var sUrl = sAction + '?q=' + sText;
+//            $(location).attr('href', sUrl);
+//            return false;
+//        });
+//    }
 
     //------------- Tooltips -------------//
 

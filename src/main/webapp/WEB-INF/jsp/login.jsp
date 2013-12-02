@@ -30,7 +30,7 @@
 
                     <div class="navbar">
                         <div class="container">
-                            <a class="navbar-brand" href="dashboard.html">Super.<span class="slogan">Magic</span></a>
+                            <a class="navbar-brand" href="dashboard.html">Super.<span class="slogan">Mario</span></a>
                         </div>
                     </div><!-- /navbar -->
 

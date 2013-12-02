@@ -1,7 +1,7 @@
 <div id="header">
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="dashboard.html" tppabs="dashboard.html">Supr.<span class="slogan">admin</span></a>
+            <a class="navbar-brand" href="dashboard.html" tppabs="dashboard.html">Supr.<span class="slogan">Mario</span></a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon16 icomoon-icon-arrow-4"></span>

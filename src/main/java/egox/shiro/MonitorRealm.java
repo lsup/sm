@@ -55,7 +55,6 @@ public class MonitorRealm extends AuthorizingRealm {
         if (username != null && !"".equals(username)) {
             //从数据库中查询用户用信息
             User user = userService.getUserByUsername(username);
-
             if (user != null) {
                 //此处无需比对,比对的逻辑Shiro会做,我们只需返回一个和令牌相关的正确的验证信息
                 return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());

@@ -1,5 +1,6 @@
 package egox.sm.service.impl;
 
+import egox.sm.bean.Resource;
 import egox.sm.bean.User;
 import egox.sm.bean.UserExample;
 import egox.sm.dao.UserMapper;
@@ -38,6 +39,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsers() {
         return userMapper.selectByExample(null);
+    }
+
+    @Override
+    public List<Resource> getResourcesByUserId(Long id) {
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

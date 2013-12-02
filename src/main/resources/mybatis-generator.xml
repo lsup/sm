@@ -3,7 +3,7 @@
 
 <generatorConfiguration>
     <properties resource="jdbc.properties" /> 
-    <classPathEntry  location="D:\repositories\maven\mysql\mysql-connector-java\5.1.26\mysql-connector-java-5.1.26.jar" />
+    <classPathEntry  location="F:\repositories\mysql\mysql-connector-java\5.1.26\mysql-connector-java-5.1.26.jar" />
     <context id="MySQLTables" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="${jdbc.driver}"
                         connectionURL="${jdbc.url}"

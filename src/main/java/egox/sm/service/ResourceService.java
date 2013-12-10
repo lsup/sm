@@ -1,6 +1,7 @@
 package egox.sm.service;
 
 import egox.sm.bean.Resource;
+import egox.sm.ui.Menu;
 import java.util.List;
 
 /**
@@ -13,4 +14,6 @@ public interface ResourceService {
     Resource getResourceById(Long id);
     
     List<Resource> getAllResources();
+    
+    public List<Menu> convetToMenus(List<Resource> resources);
 }

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!--Responsive navigation button-->
 <div class="resBtn">
     <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
@@ -21,81 +23,57 @@
             <li><a href="#" title="Write post" class="tip"><span class="icon24 icomoon-icon-pencil"></span></a></li>
         </ul>
     </div><!-- End search -->
-
     <div class="sidenav">
-
         <div class="sidebar-widget" style="margin: -1px 0 0 0;">
             <h5 class="title" style="margin-bottom:0">Navigation</h5>
         </div><!-- End .sidenav-widget -->
-
         <div class="mainnav">
             <ul>
-                <li><a href="charts.html"><span class="icon16 icomoon-icon-stats-up"></span>Charts</a></li>
-                <li>
-                    <a href="#"><span class="icon16 icomoon-icon-list"></span>Forms<span class="notification red">sub2</span></a>
-                    <ul class="sub">
-                        <li><a href="forms.html"><span class="icon16 icomoon-icon-file"></span>Forms Stuff</a></li>
-                        <li><a href="forms-validation.html"><span class="icon16 icomoon-icon-file"></span>Validation</a></li>
-                        <li>
-                            <a href="#"><span class="icon16 icomoon-icon-file"></span>Sub Level 2<span class="notification red">new</span></a>
+                <c:forEach items="${menu}" var="item">
+                    <li><a href="${item.url}"><span class="icon16 
+                                                    <c:choose>
+
+                                                        <c:when test="${not empty item.icon}">${item.icon}
+                                                        </c:when>
+
+                                                        <c:otherwise>entypo-icon-music
+                                                        </c:otherwise>
+
+                                                    </c:choose>"></span>${item.name}</a>
+                            <c:if test="${not empty item.children}">
                             <ul class="sub">
-                                <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
-                                <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
-                                <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
-                                <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
+                                <c:forEach items="${item.children}" var="sub1">
+                                    <li><a href="${sub1.url}"><span class="icon16 <c:choose>
+
+                                                        <c:when test="${not empty sub1.icon}">${sub1.icon}
+                                                        </c:when>
+
+                                                        <c:otherwise>entypo-icon-music
+                                                        </c:otherwise>
+
+                                                    </c:choose>"></span>${sub1.name}</a>
+                                            <c:if test="${not empty sub1.children}">
+                                            <ul class="sub">
+                                                <c:forEach items="${sub1.children}" var="sub2">
+                                                    <li><a href="${sub2.url}"><span class="icon16 <c:choose>
+
+                                                        <c:when test="${not empty sub2.icon}">${sub2.icon}
+                                                        </c:when>
+
+                                                        <c:otherwise>entypo-icon-music
+                                                        </c:otherwise>
+
+                                                    </c:choose>"></span>${sub2.name}</a></li>
+                                                        </c:forEach>
+                                            </ul>
+                                        </c:if>
+                                    </li>
+                                </c:forEach>
                             </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="icon16 icomoon-icon-table-2"></span>Tables</a>
-                    <ul class="sub">
-                        <li><a href="tables.html"><span class="icon16 icomoon-icon-arrow-right-3"></span>Static</a></li>
-                        <li><a href="data-table.html"><span class="icon16 icomoon-icon-arrow-right-3"></span>Data table</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="icon16 icomoon-icon-equalizer-2"></span>UI Elements</a>
-                    <ul class="sub">
-                        <li><a href="icons.html"><span class="icon16 icomoon-icon-rocket"></span>Icons</a></li>
-                        <li><a href="buttons.html"><span class="icon16 icomoon-icon-file"></span>Buttons</a></li>
-                        <li><a href="elements.html"><span class="icon16 icomoon-icon-cogs"></span>Elements</a></li>
-                    </ul>
-                </li>
-                <li><a href="typo.html"><span class="icon16 icomoon-icon-font"></span>Typography</a></li>
-                <li><a href="grid.html"><span class="icon16 icomoon-icon-grid"></span>Grid</a></li>
-                <li><a href="calendar.html"><span class="icon16 icomoon-icon-calendar"></span>Calendar</a></li>
-                <li>
-                    <a href="widgets.html"><span class="icon16 icomoon-icon-cube"></span>Widgets<span class="notification green">35</span></a>
-                </li>
-                <li><a href="file.html"><span class="icon16 icomoon-icon-upload"></span>File Manager</a></li>
-                <li>
-                    <a href="#"><span class="icon16 icomoon-icon-file"></span>Error pages<span class="notification">6</span></a>
-                    <ul class="sub">
-                        <li><a href="403.html"><span class="icon16 icomoon-icon-file"></span>Error 403</a></li>
-                        <li><a href="404.html"><span class="icon16 icomoon-icon-file"></span>Error 404</a></li>
-                        <li><a href="405.html"><span class="icon16 icomoon-icon-file"></span>Error 405</a></li>
-                        <li><a href="500.html"><span class="icon16 icomoon-icon-file"></span>Error 500</a></li>
-                        <li><a href="503.html"><span class="icon16 icomoon-icon-file"></span>Error 503</a></li>
-                        <li><a href="offline.html"><span class="icon16 icomoon-icon-file"></span>Offline page</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="icon16 icomoon-icon-folder"></span>Other pages<span class="notification blue">11</span></a>
-                    <ul class="sub">
-                        <li><a href="invoice.html"><span class="icon16 icomoon-icon-file"></span>Invoice page</a></li>
-                        <li><a href="profile.html"><span class="icon16 icomoon-icon-file"></span>User profile</a></li>
-                        <li><a href="search.html"><span class="icon16 icomoon-icon-search-3"></span>Search page</a></li>
-                        <li><a href="email.html"><span class="icon16 icomoon-icon-envelop"></span>Email page</a></li>
-                        <li><a href="support.html"><span class="icon16  icomoon-icon-support"></span>Support page</a></li>
-                        <li><a href="faq.html"><span class="icon16 icomoon-icon-attachment"></span>FAQ page</a></li>
-                        <li><a href="structure.html"><span class="icon16 icomoon-icon-file"></span>Blank page</a></li>
-                        <li><a href="fixed-topbar.html"><span class="icon16 icomoon-icon-file"></span>Fixed topbar</a></li>
-                        <li><a href="right-sidebar.html"><span class="icon16 icomoon-icon-file"></span>Right sidebar</a></li>
-                        <li><a href="two-sidebars.html"><span class="icon16 icomoon-icon-file"></span>Two sidebars</a></li>
-                        <li><a href="drag.html"><span class="icon16 icomoon-icon-move"></span>Drag &amp; Drop <span class="notification red">new</span></a></li>
-                    </ul>
-                </li>
+
+                        </c:if>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
     </div><!-- End sidenav -->

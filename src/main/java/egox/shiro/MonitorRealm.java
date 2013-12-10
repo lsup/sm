@@ -3,6 +3,7 @@ package egox.shiro;
 import egox.sm.bean.User;
 import egox.sm.service.RoleService;
 import egox.sm.service.UserService;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import org.apache.shiro.authc.AuthenticationException;
@@ -51,13 +52,18 @@ public class MonitorRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        String username = token.getUsername();
+        String username = token.getUsername().trim();
+        String password = "";
+        if (token.getPassword() != null) {
+            password = new String(token.getPassword());
+        }
         if (username != null && !"".equals(username)) {
             //从数据库中查询用户用信息
-            User user = userService.getUserByUsername(username);
+            User user = userService.login(username, password);
             if (user != null) {
-                //此处无需比对,比对的逻辑Shiro会做,我们只需返回一个和令牌相关的正确的验证信息
-                return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());
+                return new SimpleAuthenticationInfo(user.getUsername(), password.toCharArray(), getName());
+            } else {
+                return null;
             }
         }
         // 没有返回登录用户名对应的SimpleAuthenticationInfo对象时,就会抛出UnknownAccountException异常
@@ -68,6 +74,70 @@ public class MonitorRealm extends AuthorizingRealm {
         SimplePrincipalCollection principals = new SimplePrincipalCollection(
                 principal, getName());
         clearCachedAuthorizationInfo(principals);
+    }
+
+    /**
+     * 自定义Authentication对象，使得Subject除了携带用户的登录名外还可以携带更多信息.
+     */
+    public static class ShiroUser implements Serializable {
+
+        private static final long serialVersionUID = -1373760761780840081L;
+        public Long id;
+        public String loginName;
+        public String name;
+
+        public ShiroUser(Long id, String loginName, String name) {
+            this.id = id;
+            this.loginName = loginName;
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        /**
+         * 本函数输出将作为默认的<shiro:principal/>输出.
+         */
+        @Override
+        public String toString() {
+            return loginName;
+        }
+
+        /**
+         * 重载hashCode,只计算loginName;
+         */
+        @Override
+        public int hashCode() {
+            int hash = 3;
+            hash = 37 * hash + (this.loginName != null ? this.loginName.hashCode() : 0);
+            return hash;
+        }
+
+        /**
+         * 重载equals,只计算loginName;
+         */
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            ShiroUser other = (ShiroUser) obj;
+            if (loginName == null) {
+                if (other.loginName != null) {
+                    return false;
+                }
+            } else if (!loginName.equals(other.loginName)) {
+                return false;
+            }
+            return true;
+        }
     }
 
 }

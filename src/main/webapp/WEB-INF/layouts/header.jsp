@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <div id="header">
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">

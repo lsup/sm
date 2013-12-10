@@ -10,11 +10,11 @@ import java.util.List;
  */
 public interface UserService {
 
+    User login(String username, String password);
+    
     User getUserById(Long id);
 
     User getUserByUsername(String username);
 
     List<User> getAllUsers();
-    
-    List<Resource> getResourcesByUserId(Long id);
 }

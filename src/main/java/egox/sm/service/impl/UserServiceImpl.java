@@ -5,6 +5,7 @@ import egox.sm.bean.User;
 import egox.sm.bean.UserExample;
 import egox.sm.dao.UserMapper;
 import egox.sm.service.UserService;
+import egox.util.Md5Utils;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,9 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Resource> getResourcesByUserId(Long id) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public User login(String username, String password) {
+        User user = getUserByUsername(username);
+        if (Md5Utils.hash(username + password + user.getSalt()).equals(user.getPassword())) {
+            return user;
+        }
+        return null;
     }
 
 }

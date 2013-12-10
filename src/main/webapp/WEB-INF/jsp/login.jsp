@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label class="col-lg-12 control-label" for="password">Password:</label>
                         <div class="col-lg-12">
-                            <input id="password" type="password" name="password" value="admin" class="form-control">
+                            <input id="password" type="password" name="password" value="123456" class="form-control">
                             <span class="icon16 icomoon-icon-lock right gray marginR10"></span>
                             <span class="forgot help-block"><a href="#">Forgot your password?</a></span>
                         </div>

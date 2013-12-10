@@ -12,7 +12,8 @@
                      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
 
-    <mvc:view-controller path="/" view-name="main" />
+    <!--<mvc:view-controller path="/login" view-name="login" />-->
+    <mvc:view-controller path="/" view-name="redirect:index" />
     <mvc:view-controller path="/home" view-name="main" />
     
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->

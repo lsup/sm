@@ -35,10 +35,10 @@ public class SecurityController extends AbstractController {
         return new ModelAndView("login");
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping("logout")
     public String logout() {
         SecurityUtils.getSubject().logout();
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 }

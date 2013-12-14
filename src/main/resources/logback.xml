@@ -10,6 +10,8 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
 -->
 <configuration scan="false" scanPeriod="60000" debug="false">
 
+    <property name="log-dir" value="/../logs" />  
+    
     <!-- 控制台 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <Encoding>UTF-8</Encoding>
@@ -23,8 +25,7 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
         <Encoding>UTF-8</Encoding>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 按天回滚 daily -->
-            <!-- log.dir 在maven profile里配置 -->
-            <fileNamePattern>${log.dir}/sm-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log-dir}/sm-error-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 日志最大的历史 60天 -->
             <maxHistory>60</maxHistory>
         </rollingPolicy>
@@ -38,7 +39,7 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
         <Encoding>UTF-8</Encoding>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 按天回滚 daily -->
-            <fileNamePattern>${log.dir}/sm-access-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log-dir}/sm-access-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 日志最大的历史 60天 -->
             <maxHistory>60</maxHistory>
         </rollingPolicy>
@@ -52,7 +53,7 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
         <Encoding>UTF-8</Encoding>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 按天回滚 daily -->
-            <fileNamePattern>${log.dir}/sm-sys-user-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log-dir}/sm-sys-user-%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 日志最大的历史 60天 -->
             <maxHistory>60</maxHistory>
         </rollingPolicy>

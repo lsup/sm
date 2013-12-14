@@ -39,7 +39,7 @@ public class IndexController extends AbstractController {
         List<Resource> resources = resourceService.getResourcesByUserId(1L);
         List<Menu> menus = resourceService.convetToMenus(resources);
         Map<String, List<Menu>> map = new HashMap<String, List<Menu>>();
-        map.put("menu", menus);
+        map.put("sidenav", menus);
         return new ModelAndView("welcome", map);
     }
 

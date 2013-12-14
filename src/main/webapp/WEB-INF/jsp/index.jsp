@@ -9,4 +9,5 @@
     <div>
         this is the index page!<br />
         <a href="users">users</a>
+    </div>
 </body>

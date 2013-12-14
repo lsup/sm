@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sm" tagdir="/WEB-INF/tags" %>
 
 <!--Responsive navigation button-->
 <div class="resBtn">
@@ -23,60 +24,7 @@
             <li><a href="#" title="Write post" class="tip"><span class="icon24 icomoon-icon-pencil"></span></a></li>
         </ul>
     </div><!-- End search -->
-    <div class="sidenav">
-        <div class="sidebar-widget" style="margin: -1px 0 0 0;">
-            <h5 class="title" style="margin-bottom:0">Navigation</h5>
-        </div><!-- End .sidenav-widget -->
-        <div class="mainnav">
-            <ul>
-                <c:forEach items="${menu}" var="item">
-                    <li><a href="${item.url}"><span class="icon16 
-                                                    <c:choose>
-
-                                                        <c:when test="${not empty item.icon}">${item.icon}
-                                                        </c:when>
-
-                                                        <c:otherwise>entypo-icon-music
-                                                        </c:otherwise>
-
-                                                    </c:choose>"></span>${item.name}</a>
-                            <c:if test="${not empty item.children}">
-                            <ul class="sub">
-                                <c:forEach items="${item.children}" var="sub1">
-                                    <li><a href="${sub1.url}"><span class="icon16 <c:choose>
-
-                                                        <c:when test="${not empty sub1.icon}">${sub1.icon}
-                                                        </c:when>
-
-                                                        <c:otherwise>entypo-icon-music
-                                                        </c:otherwise>
-
-                                                    </c:choose>"></span>${sub1.name}</a>
-                                            <c:if test="${not empty sub1.children}">
-                                            <ul class="sub">
-                                                <c:forEach items="${sub1.children}" var="sub2">
-                                                    <li><a href="${sub2.url}"><span class="icon16 <c:choose>
-
-                                                        <c:when test="${not empty sub2.icon}">${sub2.icon}
-                                                        </c:when>
-
-                                                        <c:otherwise>entypo-icon-music
-                                                        </c:otherwise>
-
-                                                    </c:choose>"></span>${sub2.name}</a></li>
-                                                        </c:forEach>
-                                            </ul>
-                                        </c:if>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-
-                        </c:if>
-                    </li>
-                </c:forEach>
-            </ul>
-        </div>
-    </div><!-- End sidenav -->
+    <sm:sidenav title="Navigation" sidenav="${sidenav}"/>
 
     <div class="sidebar-widget">
         <h5 class="title">Monthly Bandwidth Transfer</h5>

@@ -3,7 +3,7 @@
 
 <head>
     <title>Main Page</title>
-    <script type="text/javascript" src="static/js/main.js" /></script><!-- Core js functions -->
+    <script src="static/js/main.js" /><!-- Core js functions -->
 </head>
 <body>
     <div>

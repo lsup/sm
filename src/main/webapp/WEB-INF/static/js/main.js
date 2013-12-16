@@ -1,17 +1,16 @@
 // make console.log safe to use
 window.console || (console = {log: function() {}});
 
-//------------- Options for Supr - admin tempalte -------------//
-var supr_Options = {
-    fixedWidth: false, //activate fixed version with true
-    rtl: false //activate rtl version with true
+//------------- Options for Super Mario -------------//
+var smOptions = {
+    fixedWidth: true//activate fixed version with true
 };
 
 //window resize events
 $(window).resize(function() {
     //get the window size
-    var wsize = $(window).width();
-    if (wsize > 980) {
+    var wSize = $(window).width();
+    if (wSize > 980) {
         $('.shortcuts.hided').removeClass('hided').attr("style", "");
         $('.sidenav.hided').removeClass('hided').attr("style", "");
     }
@@ -20,52 +19,38 @@ $(window).resize(function() {
     //console.log(size);
 });
 
-$(window).load(function() {
-    var wheight = $(window).height();
-    $('#sidebar.scrolled').css('height', wheight - 63 + 'px');
-});
+// 不知道干嘛用的
+//$(window).load(function() {
+//    var wHeight = $(window).height();
+//    $('#sidebar.scrolled').css('height', wHeight - 63 + 'px');
+//});
 
 // document ready function
 $(document).ready(function() {
 
     //make template fixed width
-    if (supr_Options.fixedWidth) {
+    if (smOptions.fixedWidth) {
         $('body').addClass('fixedWidth');
         $('#header').addClass('container');
         $('#wrapper').addClass('container');
     }
 
-    //rtl version
-    if (supr_Options.rtl) {
-        localStorage.setItem('rtl', 1);
-        $('#bootstrap').attr('href', 'static/css/bootstrap.rtl.min.css');
-        $('#bootstrap-responsive').attr('href', 'static/css/bootstrap/bootstrap-responsive.rtl.min.css');
-        $('body').addClass('rtl');
-        if (!$('#content-two').length) {
-            $('#sidebar').attr('id', 'sidebar-right');
-            $('#sidebarbg').attr('id', 'sidebarbg-right');
-            $('.collapseBtn').addClass('rightbar').removeClass('leftbar');
-            $('#content').attr('id', 'content-one');
-        }
-    } else {
-        localStorage.setItem('rtl', 0);
-    }
+    // 不知所云
+    //localStorage.setItem('rtl', 0);
 
     //Disable certain links
     $('a[href^=#]').click(function(e) {
         e.preventDefault();
     });
 
-    $('.search-btn').addClass('nostyle');//tell uniform to not style this element
-
     //------------- Navigation -------------//
 
-    mainNav = $('.mainnav>ul>li');
+    var mainNav = $('.mainnav>ul>li');
     mainNav.find('ul').siblings().addClass('hasUl').append('<span class="hasDrop icon16 icomoon-icon-arrow-down-2"></span>');
-    mainNavLink = mainNav.find('a').not('.sub a');
-    mainNavLinkAll = mainNav.find('a');
-    mainNavSubLink = mainNav.find('.sub a').not('.sub li');
-    mainNavCurrent = mainNav.find('a.current');
+    var mainNavLink = mainNav.find('a').not('.sub a');
+    var mainNavLinkAll = mainNav.find('a');
+    var mainNavSubLink = mainNav.find('.sub a').not('.sub li');
+    var mainNavCurrent = mainNav.find('a.current');
 
     //add hasSub to first element
     if (mainNavLink.hasClass('hasUl')) {
@@ -134,7 +119,7 @@ $(document).ready(function() {
 
     //click magic
     mainNavLink.click(function(event) {
-        $this = $(this);
+        var $this = $(this);
         if ($this.hasClass('hasUl')) {
             event.preventDefault();
             if ($this.hasClass('drop')) {
@@ -145,7 +130,7 @@ $(document).ready(function() {
         }
     });
     mainNavSubLink.click(function(event) {
-        $this = $(this);
+        var $this = $(this);
         if ($this.hasClass('hasUl')) {
             event.preventDefault();
             if ($this.hasClass('drop')) {
@@ -158,7 +143,7 @@ $(document).ready(function() {
 
     //responsive buttons
     $('.resBtn>a').click(function(event) {
-        $this = $(this);
+        var $this = $(this);
         if ($this.hasClass('drop')) {
             $this.removeClass('drop');
         } else {
@@ -181,18 +166,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.resBtnSearch>a').click(function(event) {
-        $this = $(this);
-        if ($this.hasClass('drop')) {
-            $('.search').slideUp(250);
-        } else {
-            $('.search').slideDown(250);
-        }
-        $this.toggleClass('drop');
-    });
-
     //Hide and show sidebar btn
-
     $(function() {
         //var pages = ['http://www.suggeelson.com/themes/supr/js/grid.html','http://www.suggeelson.com/themes/supr/js/charts.html'];
         var pages = [];
@@ -219,7 +193,7 @@ $(document).ready(function() {
     });
 
     $('.collapseBtn').bind('click', function() {
-        $this = $(this);
+        var $this = $(this);
 
         //left sidbar clicked
         if ($this.hasClass('leftbar')) {
@@ -323,25 +297,6 @@ $(document).ready(function() {
         $(this).removeClass('hover');
     });
 
-    //------------- Search forms  submit handler  -------------//
-//    if ($('#tipue_search_input').length) {
-//        $('#tipue_search_input').tipuesearch({
-//            'show': 5
-//        });
-//        $('#search-form').submit(function() {
-//            return false;
-//        });
-//
-//        //make custom redirect for search form in .heading
-//        $('#searchform').submit(function() {
-//            var sText = $('.top-search').val();
-//            var sAction = $(this).attr('action');
-//            var sUrl = sAction + '?q=' + sText;
-//            $(location).attr('href', sUrl);
-//            return false;
-//        });
-//    }
-
     //------------- Tooltips -------------//
 
     //top tooltip
@@ -398,10 +353,7 @@ $(document).ready(function() {
 
     //------------- Uniform  -------------//
     //add class .nostyle if not want uniform to style field
+    $('.search-btn').addClass('nostyle');//tell uniform to not style this element
     $("input, textarea, select").not('.nostyle').uniform();
-
-    //remove overlay and show page
-    $("#qLoverlay").fadeOut(250);
-    $("#qLbar").fadeOut(250);
 
 });

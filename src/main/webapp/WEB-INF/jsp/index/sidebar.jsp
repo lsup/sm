@@ -18,10 +18,10 @@
 
     <div class="shortcuts">
         <ul>
-            <li><a href="support.html" title="Support" class="tip"><span class="icon24 icomoon-icon-support"></span></a></li>
+            <li><a href="support.html" title="Support" class="tipR"><span class="icon24 icomoon-icon-support"></span></a></li>
             <li><a href="#" title="Database backup" class="tip"><span class="icon24 icomoon-icon-database"></span></a></li>
             <li><a href="charts.html" title="Sales statistics" class="tip"><span class="icon24 icomoon-icon-pie-2"></span></a></li>
-            <li><a href="#" title="Write post" class="tip"><span class="icon24 icomoon-icon-pencil"></span></a></li>
+            <li><a href="#" title="Write post" class="tipR"><span class="icon24 icomoon-icon-pencil"></span></a></li>
         </ul>
     </div><!-- End search -->
     <sm:sidenav title="Navigation" sidenav="${sidenav}"/>

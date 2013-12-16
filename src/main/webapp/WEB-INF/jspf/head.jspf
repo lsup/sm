@@ -47,11 +47,11 @@
 
 <!-- Important plugins put in all pages -->
 <script src="static/js/jquery-1.10.2.min.js"></script>
-<script src="static/js/jquery-ui.min.js"></script>
+<%--<script src="static/js/jquery-ui.min.js"></script>--%>
 <!--<script src="static/js/jquery-migrate-1.2.1.min.js"></script>-->
 <script src="static/js/bootstrap.js"></script>
 <script src="static/plugins/jquery.mousewheel.js"></script>
 <script src="static/plugins/respond.min.js"></script>
 
-<%@include file="/WEB-INF/layouts/jspf/import-uniform.jspf"%>
-<%@include file="/WEB-INF/layouts/jspf/import-qtip.jspf"%>
+<%@include file="/WEB-INF/jspf/import-uniform.jspf"%>
+<%@include file="/WEB-INF/jspf/import-qtip.jspf"%>

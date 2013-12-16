@@ -23,9 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController extends AbstractController {
 
-    /**
-     * logger
-     */
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
@@ -40,7 +37,7 @@ public class IndexController extends AbstractController {
         List<Menu> menus = resourceService.convetToMenus(resources);
         Map<String, List<Menu>> map = new HashMap<String, List<Menu>>();
         map.put("sidenav", menus);
-        return new ModelAndView("welcome", map);
+        return new ModelAndView("index/welcome", map);
     }
 
 }

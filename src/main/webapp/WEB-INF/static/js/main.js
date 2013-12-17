@@ -20,10 +20,10 @@ $(window).resize(function() {
 });
 
 // 不知道干嘛用的
-//$(window).load(function() {
-//    var wHeight = $(window).height();
-//    $('#sidebar.scrolled').css('height', wHeight - 63 + 'px');
-//});
+$(window).load(function() {
+    var wHeight = $(window).height();
+    $('#sidebar.scrolled').css('height', wHeight - 63 + 'px');
+});
 
 // document ready function
 $(document).ready(function() {

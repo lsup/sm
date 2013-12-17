@@ -23,7 +23,7 @@
             <li><a href="charts.html" title="Sales statistics" class="tip"><span class="icon24 icomoon-icon-pie-2"></span></a></li>
             <li><a href="#" title="Write post" class="tipR"><span class="icon24 icomoon-icon-pencil"></span></a></li>
         </ul>
-    </div><!-- End search -->
+    </div><!-- End shortcuts -->
     <sm:sidenav title="Navigation" sidenav="${sidenav}"/>
 
     <div class="sidebar-widget">

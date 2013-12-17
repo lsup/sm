@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    
+
     <display-name>sm</display-name>
 
     <!-- 发生错误，页面跳转 开始 -->
@@ -40,17 +40,7 @@
         <filter-name>HiddenHttpMethodFilter</filter-name>  
         <servlet-name>SpringMVC</servlet-name>  
     </filter-mapping> 
-    
-    <!--<filter>-->
-        <!--<filter-name>sitemeshFilter</filter-name>-->
-        <!--<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>-->
-    <!--</filter>-->
-    <!--&lt;!&ndash; note:sitemesh filter mapping must appear after springSecurityFilterChain filter mapping &ndash;&gt; -->
-    <!--<filter-mapping>-->
-        <!--<filter-name>sitemeshFilter</filter-name>-->
-        <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
-    
+
     <!-- 字符集过滤器  -->
     <filter>
         <filter-name>encodingFilter</filter-name>

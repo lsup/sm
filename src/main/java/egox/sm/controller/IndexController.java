@@ -3,7 +3,7 @@ package egox.sm.controller;
 import egox.sm.bean.Resource;
 import egox.sm.service.ResourceService;
 import egox.sm.ui.Menu;
-import java.util.Collections;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +37,7 @@ public class IndexController extends AbstractController {
         List<Menu> menus = resourceService.convetToMenus(resources);
         Map<String, List<Menu>> map = new HashMap<String, List<Menu>>();
         map.put("sidenav", menus);
-        return new ModelAndView("index/welcome", map);
+        return new ModelAndView("index/index", map);
     }
 
 }

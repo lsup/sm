@@ -5,6 +5,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
                      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
                      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
@@ -13,29 +14,30 @@
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
 
     <!--<mvc:view-controller path="/login" view-name="login" />-->
-    <mvc:view-controller path="/" view-name="redirect:welcome" />
-    <mvc:view-controller path="/home" view-name="main" />
+    <mvc:view-controller path="/" view-name="redirect:index" />
+    <mvc:view-controller path="/welcome" view-name="welcome" />
     
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
     <!-- order=2147483646 -->
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/" cache-period="31556926" />
     <!-- order=2147483647 -->
-    <mvc:default-servlet-handler/>
+    <mvc:default-servlet-handler />
 
     <!-- Scans the impl package for module @Components to install and configure -->
     <context:component-scan base-package="egox.sm.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
-    
-<!--     Configures Tiles 
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-        <property name="definitions">
-            <list>
-                <value>/WEB-INF/tiles/tiles.xml</value>
-                <value>/WEB-INF/accounts/tiles.xml</value>
-            </list>
-        </property>
-    </bean>-->
+
+    <!-- 拦截器设置 -->
+    <!--<mvc:interceptors>-->
+        <!--<bean class="egox.sm.interceptor.SetCommonDataInterceptor">-->
+            <!--<property name="excludeUrlPatterns">-->
+                <!--<value>-->
+                    <!--/static-->
+                <!--</value>-->
+            <!--</property>-->
+        <!--</bean>-->
+    <!--</mvc:interceptors>-->
     
     <!-- Resolves messages to support internationalization -->
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -67,11 +69,7 @@
                 <!-- for application/json -->  
                 <bean class="egox.ext.fastjson.FastJsonJsonView" />
                 <!--<bean class="com.alibaba.fastjson.support.spring.FastJsonJsonView" />-->
-                
-                <!--                <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
-                    <property name="contentType" value="text/html" />
-                </bean>-->
-                
+
                 <!-- for application/xml -->  
                 <bean class="org.springframework.web.servlet.view.xml.MarshallingView" >  
                     <property name="marshaller">  
@@ -84,10 +82,6 @@
         <property name="viewResolvers">
             <list>
 
-<!--                <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
-                    <property name="contentType" value="text/html" />
-                </bean>-->
-            
                 <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
                 <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
                 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -99,17 +93,11 @@
         </property>
     </bean> 
 
-    <!-- Only needed because we require fileupload in the org.springframework.samples.mvc.fileupload package -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="defaultEncoding">
-            <value>UTF-8</value>
-        </property>
-        <property name="maxUploadSize">
-            <value>32505856</value><!-- 上传文件大小限制为31M，31*1024*1024 -->
-        </property>
-        <property name="maxInMemorySize">
-            <value>4096</value>
-        </property>
+    <!-- Only needed because we require file upload in the org.springframework.samples.mvc.fileupload package -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+          p:defaultEncoding="UTF-8">
+        <property name="maxUploadSize" value="32505856"/>
+        <property name="maxInMemorySize" value="4096"/>
     </bean>
     
 </beans>

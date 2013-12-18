@@ -9,7 +9,6 @@
     <name>Super Mario</name>
 
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.5.RELEASE</spring.version>
         <shiro.version>1.2.2</shiro.version>
@@ -352,9 +351,7 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
+                    <encoding>project.build.sourceEncoding</encoding>
                 </configuration>
             </plugin>
             <plugin>

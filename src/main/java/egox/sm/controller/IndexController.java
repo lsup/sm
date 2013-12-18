@@ -31,13 +31,18 @@ public class IndexController extends AbstractController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = "welcome", method = RequestMethod.GET)
-    public ModelAndView getAllUsers() {
+    @RequestMapping(value = "index", method = RequestMethod.GET)
+    public ModelAndView index() {
         List<Resource> resources = resourceService.getResourcesByUserId(1L);
         List<Menu> menus = resourceService.convetToMenus(resources);
         Map<String, List<Menu>> map = new HashMap<String, List<Menu>>();
         map.put("sidenav", menus);
         return new ModelAndView("index/index", map);
+    }
+
+    @RequestMapping(value = "welcome", method = RequestMethod.GET)
+    public ModelAndView welcome() {
+        return new ModelAndView("index/welcome");
     }
 
 }

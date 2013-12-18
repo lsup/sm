@@ -5,10 +5,10 @@ window.console || (console = {log: function() {}});
 var smOptions = {
     fixedWidth: true//activate fixed version with true
 };
-
 //window resize events
 $(window).resize(function() {
     //get the window size
+
     var wSize = $(window).width();
     if (wSize > 980) {
         $('.shortcuts.hided').removeClass('hided').attr("style", "");

@@ -1568,7 +1568,7 @@ select {width: 150px;}
 	float: left;
 	width: 100%;
 	position: relative;
-	padding-top: 76px;
+	/*padding-top: 76px; //不使用.heading*/
 }
 
 /*Left sidebar*/
@@ -1587,7 +1587,7 @@ select {width: 150px;}
 #sidebar {
 	width: 210px;
 	padding-top: 67px;
-	float: left;
+    float: left;
 	z-index: 1;
 	position: relative;
 	-webkit-transition: margin ease-in-out 0.1s;

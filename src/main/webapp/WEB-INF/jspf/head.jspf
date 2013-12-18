@@ -15,6 +15,7 @@
 
 <!-- Core stylesheets do not remove -->
 <link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href="static/css/bootstrap/layout-default.css" rel="stylesheet" />
 <link href="static/css/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="static/css/bootstrap/bootstrap-theme.css" rel="stylesheet" />
 <link href="static/css/supr-theme/jquery.ui.supr.css" rel="stylesheet" />
@@ -25,7 +26,7 @@
 
 <!-- Custom stylesheets ( Put your own changes here ) -->
 <link href="static/css/custom.css" rel="stylesheet"/>
-<link href="static/css/egox.css" rel="stylesheet"/>
+<%--<link href="static/css/egox.css" rel="stylesheet"/>--%>
 
 <!--[if IE 8]>
 <link href="static/css/ie8.css" rel="stylesheet"/>
@@ -47,8 +48,9 @@ ExplorerCanvas supports HTML5 canvas
 <link rel="apple-touch-icon-precomposed" href="static/images/apple-touch-icon-57-precomposed.png" />
 
 <!-- Important plugins put in all pages -->
-<script src="static/js/jquery-1.9.1.min.js"></script>
+<script src="static/js/jquery-1.9.1.js"></script>
 <script src="static/js/jquery-ui.js"></script>
+<script src="static/plugins/jquery.layout.js"></script>
 <!--<script src="static/js/jquery-migrate-1.2.1.min.js"></script>-->
 <script src="static/js/bootstrap.js"></script>
 <script src="static/plugins/jquery.mousewheel.js"></script>

@@ -25,7 +25,7 @@
     <!-- Shiro's main business-tier object for web-enabled applications -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="monitorRealm" />
-        <property name="cacheManager" ref="cacheManager" />
+        <property name="cacheManager" ref="shiroCacheManager" />
         <!-- By default the servlet container sessions will be used.  Uncomment this line to use shiro's native sessions (see the JavaDoc for more): -->
         <!-- <property name="sessionMode" value="native"/> -->
     </bean>
@@ -34,7 +34,7 @@
     <bean id="monitorRealm" class="egox.shiro.MonitorRealm" />
 
     <!-- 用户授权信息Cache -->
-    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+    <bean id="shiroCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
 
     <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

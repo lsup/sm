@@ -1568,7 +1568,7 @@ select {width: 150px;}
 	float: left;
 	width: 100%;
 	position: relative;
-	/*padding-top: 76px; //不使用.heading*/
+	padding-top: 76px;
 }
 
 /*Left sidebar*/
@@ -3662,3 +3662,7 @@ body.rtl .support-section .sendMsg {margin-right: 0;}
 	.loginContainer {width: 180px;margin-left: -100px;}
 	.ui-datepicker{ max-width: 180px;}
 }
+
+/*.contentwrapper {*/
+    /*padding-top: 0px; *//*不使用.heading*/
+/*}*/

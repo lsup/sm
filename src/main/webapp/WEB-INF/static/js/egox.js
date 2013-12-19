@@ -1,3 +1,54 @@
+$.egox = {
+    ui : {
+        tabs: {
+            containerId: "#tabsContainer",
+            templates: {
+                all:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul><li><b class="icon-remove"></b></li><li><b class="icon-refresh"></b></li></ul></li>',
+                onlyRefresh:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-refresh"></b></li></ul></li>',
+                onlyRemove:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-remove"></b></li></ul></li>',
+                none:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a></li>'
+            },
+            $tabs: null,
+            $currentTab: null,
+            defaultOptions: {
+                title:'测试Tab',
+                closable: true,
+                refreshable: true
+            },
+            initTabs: function() {
+                this.$tabs = $(this.containerId);
+                this.$currentTab=this.$tabs.find(".ui-tabs-active");
+                console.info($.egox.ui.tabs);
+            },
+            openTab: function() {
+
+            },
+            closeTab: function() {
+
+            },
+            refreshTab: function() {
+
+            },
+            createTab: function(options) {
+                var mergedOptions = this.defaultOptions;
+                if (!this.$tabs) {
+                    this.initTabs();
+                }
+                var html = this.templates.all.replace(/\{href\}/g, "tab-1").replace(/\{label\}/g, mergedOptions.title);
+
+console.info(html);
+                this.$tabs = this.$tabs.find('.ui-tabs-nav').append(html);
+
+
+            }
+
+        }
+    }
+}
+
+
+
+
 //自己扩展的jquery函数
 //压缩时请把编码改成ANSI
 $.app = {

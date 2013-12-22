@@ -1,24 +1,53 @@
 $.egox = {
     ui : {
+        loading: function(){
+            $("#qLoverlay").fadeIn(250);
+            $("#qLbar").fadeIn(250);
+        },
+        loaded: function(){
+            //remove overlay and show page
+            $("#qLoverlay").fadeOut(250);
+            $("#qLbar").fadeOut(250);
+        },
         tabs: {
-            containerId: "#tabsContainer",
-            templates: {
-                all:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul><li><b class="icon-remove"></b></li><li><b class="icon-refresh"></b></li></ul></li>',
-                onlyRefresh:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-refresh"></b></li></ul></li>',
-                onlyRemove:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-remove"></b></li></ul></li>',
-                none:'<li class="ui-state-default ui-corner-top ui-tabs-active"><a href="#{href}" class="ui-tabs-anchor">{label}</a></li>'
-            },
+            containerId: "#tabContainer",
+            tabCounter: 1,
+            $tabHeaders: null,
             $tabs: null,
-            $currentTab: null,
+            headerTemplates: {
+                all:'<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul><li><b class="icon-remove"></b></li><li><b class="icon-refresh"></b></li></ul></li>',
+                onlyRefresh:'<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-refresh"></b></li></ul></li>',
+                onlyRemove:'<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-remove"></b></li></ul></li>',
+                none:'<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a></li>'
+            },
             defaultOptions: {
-                title:'测试Tab',
                 closable: true,
                 refreshable: true
             },
-            initTabs: function() {
-                this.$tabs = $(this.containerId);
-                this.$currentTab=this.$tabs.find(".ui-tabs-active");
-                console.info($.egox.ui.tabs);
+            init: function(containerId) {
+                if (containerId) {
+                    this.containerId = containerId;
+                }
+                // create the tabs before the page layout because tabs will change the height of the north-pane
+                this.$tabs = $(this.containerId).tabs({
+                    activate: $.layout.callbacks.resizeTabLayout
+                });
+
+                this.$tabHeaders = $("#tabHeaders");
+
+                // create the outer/page layout
+                $('#mainContainer').layout( {
+                    north__paneSelector:"#tabButtons",
+                    center__paneSelector:"#tabPanels",
+                    spacing_open:0,
+                    //	center panel contains a Tabs widget, with a layout inside 1 or more tab-panels
+                    center__onresize: $.layout.callbacks.resizeTabLayout
+                });
+                $.egox.ui.loaded();
+
+            },
+            activeTab: function(id) {
+                this.$tabHeaders.find("li.ui-tabs-active").removeClass("ui-tabs-active");
             },
             openTab: function() {
 
@@ -32,31 +61,355 @@ $.egox = {
             createTab: function(options) {
                 var mergedOptions = this.defaultOptions;
                 if (!this.$tabs) {
-                    this.initTabs();
+                    this.init();
                 }
-                var html = this.templates.all.replace(/\{href\}/g, "tab-1").replace(/\{label\}/g, mergedOptions.title);
+                var html = '';
+                var id = "tab-" + (this.tabCounter++);
+                var label = options.label ? options.label : id;
+                if (mergedOptions.closable) {
+                    if (mergedOptions.refreshable) {
+                        html = this.headerTemplates.all.replace(/\{href\}/g, id).replace(/\{label\}/g, label);
+                    } else {
+                        html = this.headerTemplates.onlyRemove.replace(/\{href\}/g, id).replace(/\{label\}/g, label);
+                    }
+                } else {
+                    if (mergedOptions.refreshable) {
+                        html = this.headerTemplates.onlyRefresh.replace(/\{href\}/g, id).replace(/\{label\}/g, label);
+                    } else {
+                        html = this.headerTemplates.none.replace(/\{href\}/g, id).replace(/\{label\}/g, label);
+                    }
+                }
+                this.$tabs = this.$tabHeaders.find('.ui-tabs-nav').append(html);
 
-console.info(html);
-                this.$tabs = this.$tabs.find('.ui-tabs-nav').append(html);
-
+            },
+            test: function() {
+                this.createTab({
+                    closable: true,
+                    refreshable: true
+                });
+                this.createTab({
+                    closable: false,
+                    refreshable: true
+                });
+                this.createTab({
+                    closable: true,
+                    refreshable: false
+                });
+                this.createTab({
+                    closable: false,
+                    refreshable: false
+                });
+                var a = " ui-tabs-active";
 
             }
-
         }
     }
 }
 
-
-
-
+var ctx = "/sm";
 //自己扩展的jquery函数
 //压缩时请把编码改成ANSI
 $.app = {
 
     /**初始化主页 layout，菜单，tab*/
     initIndex: function () {
+//        $.menus.initMenu();
         $.layouts.initLayout();
         $.tabs.initTab();
+
+    },
+    initCommonBtn : function() {
+        $(".btn-view-info,.btn-change-password").click(function() {
+            var a = $(this);
+            var url = "";
+            if(a.is(".btn-view-info")) {
+                url = ctx +"/admin/sys/user/loginUser/viewInfo";
+            } else if(a.is(".btn-change-password")) {
+                url = ctx + "/admin/sys/user/loginUser/changePassword";
+            }
+            setTimeout(function() {
+                $.tabs.activeTab($.tabs.nextCustomTabIndex(), "个人资料", url, true)
+            }, 0);
+        });
+        $(".btn-view-message,.btn-message").click(function() {
+            var url = ctx + "/admin/personal/message";
+            setTimeout(function() {
+                $.tabs.activeTab($.tabs.nextCustomTabIndex(), "我的消息", url, true)
+            }, 0);
+        });
+        $(".btn-view-notice").click(function() {
+            var url = ctx + "/office/personal/notice/list?read=false";
+            setTimeout(function() {
+                $.tabs.activeTab($.tabs.nextCustomTabIndex(), "我的通知", url, true)
+            }, 0);
+        });
+        $(".btn-view-worklist,.btn-view-work").click(function() {
+            var $that = $(this);
+            var url = ctx + "/office/personal/worklist";
+            setTimeout(function() {
+                if($that.is(".btn-view-work")) {
+                    url = $that.data("url");
+                }
+                $.tabs.activeTab($.tabs.nextCustomTabIndex(), "我的待办工作", url, true)
+            }, 0);
+
+            return false;
+        });
+
+
+    },
+    initMessage : function() {
+        var messageBtn = $(".btn-message");
+        var icon = messageBtn.find(".icon-message");
+        var messageBtnInterval = null;
+
+        var activeUnreadIcon = function(count) {
+            clearInterval(messageBtnInterval);
+            if(count > 0) {
+                var label = messageBtn.find(".icon-count");
+                if(!label.length) {
+                    label = $("<i class='label label-important icon-count'></i>");
+                    messageBtn.append(label);
+                }
+                label.text(count);
+                messageBtn.addClass("unread");
+                messageBtnInterval = setInterval(function() {icon.toggleClass("icon-envelope-alt").toggleClass("icon-envelope");}, 650);
+            }
+        };
+
+        messageBtn.click(function() {
+            clearInterval(messageBtnInterval);
+            $($.find("#menu a:contains(我的消息)")).dblclick();
+            messageBtn.removeClass("unread");
+            messageBtn.find(".icon-count").remove();
+            icon.removeClass("icon-envelope").addClass("icon-envelope-alt");
+
+        });
+
+        activeUnreadIcon(messageBtn.data("unread"));
+
+        return {
+            update : function(unReadMessageCount) {
+                activeUnreadIcon(unReadMessageCount);
+            }
+        };
+    },
+    initNotification : function() {
+        var notificationBtn = $(".btn-notification");
+        var notificationList = $(".notification-list");
+        var menu = $(".notification-list .menu");
+        var menuList = menu.find(".list");
+        var detail = $(".notification-list .detail");
+        var detailList = detail.find(".list");
+        var loading = $(".notification-list .loading");
+        var noComment = $(".notification-list .no-comment");
+        var markReadUrl = ctx + "/admin/personal/notification/markRead?id=";
+
+        var contentTemplate = '<li class="view-content {unread}"><span>{title}</span><span class="pull-right">{date}</span></li>';
+        var detailContentTemplate = '<div id="notificaiton-{id}" class="notification-detail" style="display: none"><div class="title"><span>{title}</span><span class="pull-right">{date}</span></div><div class="content">{content}</div></div>';
+        var moreContent = '<li class="view-all-notification"><span>&gt;&gt;查看所有通知</span></li>';
+
+        var viewAllNotification = function() {
+            $($.find("#menu a:contains(我的通知)")).dblclick();
+            hideNotification();
+            return false;
+        };
+        var hideNotification = function() {
+            notificationList.find(".content > div").hide();
+            notificationList.removeClass("in");
+            $("body")
+                .off("click")
+                .find("iframe").contents().find("body").each(function() {
+                    $(this).off("click");
+                });
+        };
+
+        var activeDetailBtn = function() {
+            var notificationDetails = detail.find(".notification-detail");
+            var current = notificationDetails.not(":hidden");
+            var currentIndex = notificationDetails.index(current);
+
+            var pre = detail.find(".pre");
+            var next = detail.find(".next");
+            pre.removeClass("none");
+            next.removeClass("none");
+
+
+            if(currentIndex == 0) {
+                pre.addClass("none");
+            }
+
+            var currentMenu = $(menu.find(".view-content").get(currentIndex));
+            if(currentMenu.hasClass("unread")) {
+                currentMenu.removeClass("unread");
+                var id = current.attr("id").replace("notificaiton-", "");
+                $.ajax({
+                    url: markReadUrl + id,
+                    global: false,
+                    error: function (xmlHR, textStatus, errorThrown) {
+                        //ignore
+                    }
+                });
+            }
+
+            if(currentIndex == notificationDetails.length - 1) {
+                next.addClass("none");
+            }
+
+        };
+
+        var showNoComment = function() {
+            notificationList.find(".content > div").hide();
+            noComment.show();
+        };
+        var showMenu = function() {
+            notificationList.find(".content > div").hide();
+            menu.show();
+        };
+
+
+        var initDetail = function(dataList) {
+            var content = "";
+            $(dataList).each(function(index, data) {
+                content = content + detailContentTemplate.replace("{id}", data.id).replace("{title}", data.title).replace("{date}", data.date).replace("{content}", data.content);
+            });
+            detailList.html(content);
+            detail.find(".notification-detail:first").show();
+            detail.find(".back-notification-list").click(function() {
+                slide(detail, menu, "left");
+            });
+            detail.find(".pre").click(function() {
+                var current = detail.find(".notification-detail").not(":hidden");
+                var pre = current.prev(".notification-detail");
+                if (pre.length) {
+                    slide(current, pre, "left");
+                }
+            });
+            detail.find(".next").click(function() {
+                var current = detail.find(".notification-detail").not(":hidden");
+                var next = current.next(".notification-detail");
+                if (next.length) {
+                    slide(current, next, "right");
+                }
+            });
+            slide(menu, detail, "right");
+
+            return false;
+        };
+
+
+
+        var initMenu = function(dataList, hasUnread) {
+
+            var content = "";
+            $(dataList).each(function (index, data) {
+                content = content + contentTemplate.replace("{unread}", data.read ? "" : "unread").replace("{title}", data.title).replace("{date}", data.date);
+            });
+            content = content + moreContent;
+            menuList.html(content);
+
+            menu.find(".view-content").click(function() {
+                initDetail(dataList);
+            });
+            menu.find(".view-all-notification").click(function() {
+                viewAllNotification();
+            });
+
+            if(hasUnread) {
+                showNotification();
+            }
+
+            return false;
+        };
+        var slide = function(from, to, direction) {
+            from.css({
+                position: 'relative',
+                width:"100%"
+            });
+            from.stop(true).hide("slide", {direction : direction == "left" ? "rigth" : "left"}, function() {
+                from.css({
+                    position : "",
+                    width : "",
+                    left : ""
+                });
+            });
+            to.css({
+                position: 'absolute',
+                top: to.is(".notification-detail") ? to.closest(".detail").find(".title").outerHeight() + "px" : "0px",
+                left: "0px",
+                width: "100%",
+                display : "none"
+            });
+            to.stop(true).show("slide", {direction : direction}, function() {
+                to.css({
+                    position : "",
+                    left : "",
+                    top : "",
+                    width : ""
+                });
+                if(to.is(".notification-detail") || to.is(".detail")) {
+                    activeDetailBtn();
+                }
+            });
+        };
+
+        var showNotification = function() {
+            notificationList.addClass("in");
+
+            var windowClickHideNotification = function (event) {
+                var target = $(event.target);
+                if (!target.closest(".btn-notification").length && !target.closest(".notification-list").length) {
+                    hideNotification();
+                }
+            };
+
+            $("body")
+                .on("click", windowClickHideNotification)
+                .find("iframe").contents().find("body").each(function() {
+                    $(this).on("click", windowClickHideNotification);
+                });
+            if(menu.find(".view-content").length) {
+                showMenu();
+            } else {
+                showNoComment();
+            }
+        };
+
+        notificationBtn.click(function() {
+            if(notificationList.hasClass("in")) {
+                hideNotification();
+            } else {
+                showNotification();
+            }
+        });
+        notificationList.find(".close-notification-list").click(function() {
+            hideNotification();
+        });
+
+        hideNotification();
+
+        return {
+            update : function(dataList) {
+
+                if(!dataList.length) {
+                    showNoComment();
+                    return;
+                }
+
+                var hasUnread = false;
+                for(var i = 0, l = dataList.length; i < l; i++) {
+                    var data = dataList[i];
+                    if(!data.read) {
+                        hasUnread = true;
+                        data.title = data.title.replace("{ctx}", ctx);
+                        data.content = data.content.replace("{ctx}", ctx);
+                    }
+                }
+
+                initMenu(dataList, hasUnread);
+
+            }
+        };
     },
     /**
      * 异步加载url内容到tab
@@ -619,7 +972,7 @@ $.layouts = {
 
         }
 
-        this.layout = $('.contentwrapper').layout({
+        this.layout = $('.index-panel').layout({
             west__size:  210
             ,   south__size: 30
             ,	west__spacing_closed:		20
@@ -643,93 +996,6 @@ $.layouts = {
             south: {
                 resizable:false
             }
-        });
-    }
-}
-
-$.menus = {
-    /**初始化菜单*/
-    initMenu: function () {
-        var menus = $("#menu");
-        menus.accordion({
-            header:"h3",
-            heightStyle:"content",
-            icons : {
-                header: "icon-caret-right",
-                activeHeader: "icon-caret-down"
-            },
-            animate : {
-                easing : "easeOutQuart"
-            }
-        });
-
-        menus.find(".ui-accordion-header-icon").removeClass("ui-icon").addClass("menu-header-icon");
-
-        var leafIconClass = "menu-icon icon-angle-right";
-        var branchOpenIconClass = "menu-icon icon-double-angle-right";
-        var branchCloseIconClass = "menu-icon icon-double-angle-down";
-        menus.find("li").each(function () {
-            var li = $(this);
-
-            li.children("a").wrap("<div class='li-wrapper'></div>");
-            var liWrapper = li.children(".li-wrapper");
-            var liUL = li.find("ul");
-            var hasChild = liUL.length;
-            if (hasChild) {
-                liUL.hide();
-                liWrapper.prepend('<span class="' + branchOpenIconClass + '"></span>')
-                    .click(function () {
-                        if (liWrapper.children("span").hasClass(branchCloseIconClass)) {
-                            liWrapper.children("span")
-                                .removeClass(branchCloseIconClass)
-                                .addClass(branchOpenIconClass)
-                                .end()
-                                .closest("li").children("ul").hide("blind");
-                        } else {
-                            liWrapper.children("span")
-                                .removeClass(branchOpenIconClass)
-                                .addClass(branchCloseIconClass)
-                                .end()
-                                .closest("li").children("ul").show("blind");
-                        }
-                    });
-            } else {
-                liWrapper.prepend('<span class="' + leafIconClass + '"></span>');
-            }
-        });
-
-        menus.find("a").each(function () {
-            var a = $(this);
-            var title = a.text();
-            var href = a.attr("href");
-            a.attr("href", "#");
-            if (href == "#" || href == '') {
-                return;
-            }
-
-            var active = function(a, forceRefresh) {
-                menus.find("a").closest("li > .li-wrapper").removeClass("active");
-                a.closest("li > .li-wrapper").addClass("active");
-                var oldPanelIndex = a.data("panelIndex");
-                var activeMenuCallback = function(panelIndex) {
-                    if(!a.data("panelIndex")) {
-                        a.data("panelIndex", panelIndex);
-                        a.attr("id", "menu-" + panelIndex);
-                    }
-                }
-                $.tabs.activeTab(oldPanelIndex, title, href, forceRefresh, activeMenuCallback);
-
-                return false;
-            }
-
-            a.closest("li")
-                .click(function () {
-                    active(a, false);
-                    return false;
-                }).dblclick(function() {
-                    active(a, true);//双击强制刷新
-                    return false;
-                });
         });
     }
 }

@@ -31,9 +31,32 @@ form .control-group .controls-row .btn.special {margin-left: 10px;}
     form .control-group .controls-row .btn.special {margin-left: 0px;}
 }
 
+#mainContainer {
+    padding:		0 !important; /* override Layout default of '0' */
+    /* set min dimensions for layout - window will scroll if smaller than this */
+    min-height:		700px;
+    /* max-width works for left-aligned layout - need a container-div to 'center' the layout */
+    /*max-width:		1000px;*/
+}
 
+
+/*
+ *	TAB CLASSES - STRUCTURAL, REQUIRED
+ */
+DIV#tabContainer { /* page-wrapper - used ONLY to 'wrap' tabButtons and tabPanels */
+    position:	static	!important; /* overide UI Theme - prevent from becoming a positional wrapper */
+    padding: 0;
+    overflow: hidden;
+}
+UL#tabButtons ,
+DIV#tabPanels {
+    margin:		0 !important; /* layout-panes should never have margins */
+    padding: 0;
+    overflow: hidden;
+}
+
+/* custom css */
 .heading .ui-tabs {
-
 }
 
 .heading .ui-tabs .ui-tabs-nav > li {
@@ -44,7 +67,6 @@ form .control-group .controls-row .btn.special {margin-left: 10px;}
     padding: 0.8em 0.3em 1em 1em;
     font-weight: bolder;
 }
-
 
 .heading .ui-tabs li ul{
     float: left;
@@ -63,20 +85,14 @@ form .control-group .controls-row .btn.special {margin-left: 10px;}
 
 }
 
-
 .heading .ui-tabs li ul.single-li li b {
     margin-top: 0.9em;
 }
-
-
-
-
-
-
 
 .heading .ui-tabs .ui-tabs-active {
     background: snow;
 }
 
-
-
+.contentwrapper {
+    padding-top: 60px;
+}

@@ -18,7 +18,6 @@
             //remove overlay and show page
             $("#qLoverlay").fadeOut(250);
             $("#qLbar").fadeOut(250);
-            $('#tabs').tabs();
         });
     </script>
 </head>

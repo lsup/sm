@@ -3,7 +3,7 @@ window.console || (console = {log: function() {}});
 
 //------------- Options for Super Mario -------------//
 var smOptions = {
-    fixedWidth: true//activate fixed version with true
+    fixedWidth: false//activate fixed version with true
 };
 //window resize events
 $(window).resize(function() {

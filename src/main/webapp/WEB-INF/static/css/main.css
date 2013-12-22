@@ -1569,6 +1569,7 @@ select {width: 150px;}
 	width: 100%;
 	position: relative;
 	padding-top: 76px;
+    overflow:  hidden !important;
 }
 
 /*Left sidebar*/

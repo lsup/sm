@@ -98,7 +98,8 @@
             <div class="index-panel">
                 <div class="tabs-bar tabs-fix-top">
                     <span class="icon-chevron-left" style="display: none;"></span>
-
+                    <div class="tabs-scroller-right" style="display: block; height: 28px;"></div>
+                    <div class="tabs-scroller-right" style="display: block; height: 28px;"></div>
                     <div class="ul-wrapper">
                         <ul>
                             <li>

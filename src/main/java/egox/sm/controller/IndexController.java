@@ -45,4 +45,24 @@ public class IndexController extends AbstractController {
         return new ModelAndView("index/welcome");
     }
 
+    @RequestMapping(value = "test1", method = RequestMethod.GET)
+    public ModelAndView test1() {
+        return new ModelAndView("test1");
+    }
+
+    @RequestMapping(value = "test2", method = RequestMethod.GET)
+    public ModelAndView test2() {
+        return new ModelAndView("test2");
+    }
+
+    @RequestMapping(value = "test3", method = RequestMethod.GET)
+    public ModelAndView test3() {
+        return new ModelAndView("test3");
+    }
+
+    @RequestMapping(value = "test4", method = RequestMethod.GET)
+    public ModelAndView test4() {
+        return new ModelAndView("test4");
+    }
+
 }

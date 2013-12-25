@@ -105,14 +105,14 @@
     position: absolute;
     font-size: 1px;
     display: block;
-    height: 12px;
+    height: 14px;
     padding: 0;
     top: 50%;
-    margin-top: -6px;
+    margin-top: -9px;
     overflow: hidden;
 }
 .tabs li a.tabs-close {
-    width: 12px;
+    width: 14px;
     right: 5px;
     opacity: 0.6;
     filter: alpha(opacity=60);
@@ -123,8 +123,8 @@
 .tabs-p-tool a {
     display: inline-block;
     font-size: 1px;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     margin: 0;
     opacity: 0.6;
     filter: alpha(opacity=60);
@@ -148,7 +148,7 @@
     margin-top: -8px;
 }
 .tabs-title {
-    font-size: 12px;
+    font-size: 14px;
 }
 .tabs-closable {
     padding-right: 8px;

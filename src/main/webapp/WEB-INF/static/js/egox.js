@@ -12,13 +12,13 @@ $.egox = {
         tabs: {
             containerId: "#tabContainer",
             tabCounter: 1,
-            $tabHeaders: null,
+            $tabHeader: null,
             $tabs: null,
             headerTemplates: {
-                all: '<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul><li><b class="icon-remove"></b></li><li><b class="icon-refresh"></b></li></ul></li>',
-                onlyRefresh: '<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-refresh"></b></li></ul></li>',
-                onlyRemove: '<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a><ul class="single-li"><li><b class="icon-remove"></b></li></ul></li>',
-                none: '<li class="ui-state-default ui-corner-top"><a href="#{href}" class="ui-tabs-anchor">{label}</a></li>'
+                all: '<li><a href="#{href}">{label}</a><ul><li><b class="icon-remove"></b></li><li><b class="icon-refresh"></b></li></ul></li>',
+                onlyRefresh: '<li><a href="#{href}">{label}</a><ul class="single-li"><li><b class="icon-refresh"></b></li></ul></li>',
+                onlyRemove: '<li><a href="#{href}">{label}</a><ul class="single-li"><li><b class="icon-remove"></b></li></ul></li>',
+                none: '<li><a href="#{href}">{label}</a></li>'
             },
             defaultOptions: {
                 closable: true,
@@ -28,18 +28,27 @@ $.egox = {
                 if (containerId) {
                     this.containerId = containerId;
                 }
-                this.$tabHeaders = $("#tabHeaders");
+                this.$tabHeader = $("#tabHeader");
                 // create the tabs before the page layout because tabs will change the height of the north-pane
                 this.$tabs = $(this.containerId).tabs({
+                    active: 1,
                     activate: function (event, ui) {
                         $.layout.callbacks.resizeTabLayout(event, ui);
 
                         // handle custom tab header
                         var newPanelId = ui.newPanel.prop("id");
-                        $.egox.ui.tabs.$tabHeaders.find("li.ui-tabs-active").removeClass("ui-tabs-active");
-                        $.egox.ui.tabs.$tabHeaders.find("a[href='#" + newPanelId + "']").parent().addClass("ui-tabs-active");
+                        var panelIndex = newPanelId.replace("ui-tabs-", "");
+                        $.egox.ui.tabs.$tabHeader.find("li.tab-active").removeClass("tab-active");
+                        $.egox.ui.tabs.$tabHeader.find("a[href='#tab-" + panelIndex + "']").parent().addClass("tab-active");
+
+
+
                     },
-                    active: 1
+                    beforeLoad: function( event, ui ) {
+                        ui.jqXHR.error(function() {
+                            ui.panel.html("Couldn't load this tab. We'll try to fix this as soon as possible.");
+                        });
+                    }
                 });
 
                 // create the outer/page layout
@@ -54,7 +63,7 @@ $.egox = {
 
             },
             activeTab: function (id) {
-                this.$tabs.tabs({active: id});
+                this.$tabs.tabs("select", id);
             },
             openTab: function () {
 
@@ -72,8 +81,9 @@ $.egox = {
                     this.init();
                 }
                 var html = '';
-                var id = "ui-tabs-" + (++this.tabCounter);
+                var id = "tab-" + (++this.tabCounter);
                 var label = options.label ? options.label : id;
+                var href = options.href ? options.href : id;
                 if (mergedOptions.closable) {
                     if (mergedOptions.refreshable) {
                         html = this.headerTemplates.all.replace(/\{href\}/g, id).replace(/\{label\}/g, label);
@@ -87,26 +97,7 @@ $.egox = {
                         html = this.headerTemplates.none.replace(/\{href\}/g, id).replace(/\{label\}/g, label);
                     }
                 }
-                this.$tabs = this.$tabHeaders.find('.ui-tabs-nav').append(html);
-
-            },
-            test: function () {
-                this.createTab({
-                    closable: true,
-                    refreshable: true
-                });
-                this.createTab({
-                    closable: false,
-                    refreshable: true
-                });
-                this.createTab({
-                    closable: true,
-                    refreshable: false
-                });
-                this.createTab({
-                    closable: false,
-                    refreshable: false
-                });
+                this.$tabs = this.$tabHeader.find('>ul').append(html);
             }
         }
     }

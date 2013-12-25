@@ -356,4 +356,7 @@ $(document).ready(function() {
     $('.search-btn').addClass('nostyle');//tell uniform to not style this element
     $("input, textarea, select").not('.nostyle').uniform();
 
+
+//    $.egox.ui.tabs.init();
+
 });

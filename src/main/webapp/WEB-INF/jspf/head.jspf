@@ -14,12 +14,13 @@
 <meta name="msapplication-TileColor" content="#3399cc"/>
 
 <!-- Core stylesheets do not remove -->
-<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
-<link href="static/css/layout-default.css" rel="stylesheet" />
+<%--<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">--%>
+<%--<link href="static/css/layout-default.css" rel="stylesheet" />--%>
 <link href="static/css/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="static/css/bootstrap/bootstrap-theme.css" rel="stylesheet" />
 <link href="static/css/supr-theme/jquery.ui.supr.css" rel="stylesheet" />
 <link href="static/css/icons.css" rel="stylesheet" />
+<link href="static/css/tabs.css" rel="stylesheet" />
 
 <!-- Main stylesheets -->
 <link href="static/css/main.css" rel="stylesheet"/>
@@ -49,9 +50,10 @@ ExplorerCanvas supports HTML5 canvas
 
 <!-- Important plugins put in all pages -->
 <script src="static/js/jquery-1.9.1.js"></script>
-<script src="static/js/jquery-ui.js"></script>
-<script src="static/plugins/jquery.layout.js"></script>
-<script src="static/plugins/jquery.layout.resizeTabLayout.js"></script>
+<script src="static/plugins/jquery.easyui.min.js"></script>
+<%--<script src="static/js/jquery-ui.js"></script>--%>
+<%--<script src="static/plugins/jquery.layout.js"></script>--%>
+<%--<script src="static/plugins/jquery.layout.resizeTabLayout.js"></script>--%>
 
 <!--<script src="static/js/jquery-migrate-1.2.1.min.js"></script>-->
 <script src="static/js/bootstrap.js"></script>

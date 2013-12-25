@@ -23,18 +23,22 @@
          *	init page onLoad
          */
         $(document).ready(function () {
-            $.egox.ui.tabs.init();
-
             $("#addTab").on("click", function(e) {
 //                $.egox.ui.tabs.createTab();
-                $.egox.ui.tabs.test();
+//                $.egox.ui.tabs.createTab({
+//                    label: '用户管理',
+//                    href: 'users'
+//                });
+                $('#tt').tabs('add',{    title:'New Tab',    content:'Tab Body',    closable:true,    tools:[{        iconCls:'icon-mini-refresh',        handler:function(){            alert('refresh');        }    }]});
+
             });
             $("#removeTab").on("click", function(e) {
 
             });
             $("#activeTab").on("click", function(e) {
-                $.egox.ui.tabs.activeTab(2);
+//                $.egox.ui.tabs.activeTab(2);
             });
+            $.egox.ui.loaded();
         });
     </script>
 </head>
@@ -54,24 +58,16 @@
     <div id="content" class="clearfix">
         <div class="contentwrapper"><!--Content wrapper-->
             <div class="heading">
-                <div id="tabHeaders" class="ui-tabs ui-corner-all">
-                    <ul class="ui-tabs-nav ui-corner-all">
-                        <li class="ui-state-default ui-corner-top nav-left">
+                <div id="tabHeader">
+                    <ul>
+                        <li class="nav-left">
                             <a><span class="icon-chevron-left"></span></a>
                         </li>
-                        <li class="ui-state-default ui-corner-top nav-right">
+                        <li class="nav-right">
                             <a><span class="icon-chevron-right"></span></a>
                         </li>
-                        <li class="ui-state-default ui-corner-top ui-tabs-active">
-                            <a href="#ui-tabs-1" class="ui-tabs-anchor">欢迎</a>
-                            <ul class="single-li">
-                                <li>
-                                    <b class="icon-refresh"></b>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="ui-state-default ui-corner-top">
-                            <a href="#ui-tabs-2" class="ui-tabs-anchor">用户</a>
+                        <li class="tab-active">
+                            <a href="#tab-1">欢迎</a>
                             <ul class="single-li">
                                 <li>
                                     <b class="icon-refresh"></b>
@@ -83,25 +79,23 @@
             </div>
 
             <div id="mainContainer">
-                <div id="tabContainer">
-
-                    <ul id="tabButtons">
-                        <li class="hidden"><a href="#ui-tabs-0"></a></li>
-                        <li><a href="welcome">Welcome</a></li>
-                        <li><a href="users">Users</a></li>
-                    </ul>
-
-                    <!-- wrap tab-panels in ui-layout-content div -->
-                    <div id="tabPanels">
-                        <!-- TAB #0 -->
-                        <div id="ui-tabs-0" class="tabPanel hidden"></div>
-
-                    </div><!-- END tabPanels -->
-
-                </div><!-- /#tabs -->
-
+                <div id="tt" class="easyui-tabs" data-options="fit:true">
+                    <div title="About" style="padding:10px">
+                        <p style="font-size:14px">jQuery EasyUI framework helps you build your web pages easily.</p>
+                        <ul>
+                            <li>easyui is a collection of user-interface plugin based on jQuery.</li>
+                            <li>easyui provides essential functionality for building modem, interactive, javascript applications.</li>
+                            <li>using easyui you don't need to write many javascript code, you usually defines user-interface by writing some HTML markup.</li>
+                            <li>complete framework for HTML5 web page.</li>
+                            <li>easyui save your time and scales while developing your products.</li>
+                            <li>easyui is very easy but powerful.</li>
+                        </ul>
+                    </div>
+                    <div title="Help" data-options="closable:true" style="padding:10px">
+                        This is the help content.
+                    </div>
+                </div>
             </div>
-
         </div><!-- End contentwrapper -->
     </div><!-- End #content -->
 

@@ -10,6 +10,10 @@ $.egox = {
             $("#qLbar").fadeOut(250);
         },
         tabs: {
+            _defaultOptions : {
+                closable: true,
+                refreshable: true
+            },
             $tabs: null,
             init: function () {
                 this.$tabs = $('#tabContainer').tabs({
@@ -25,31 +29,40 @@ $.egox = {
                 });
                 $.egox.ui.loaded();
             },
-            activeTab: function (id) {
-            },
-            openTab: function () {
+            openTab: function (title, href) {
+                if (title instanceof Object) {
+                    this._createTab(title);
+                } else {
+                    this._createTab({
+                        title: title,
+                        href: href
+                    })
+                }
 
             },
-            closeTab: function () {
-
-            },
-            refreshTab: function () {
-
-            },
-            createTab: function (title, href) {
+            _createTab: function (options) {
+                var mergedOptions = $.extend(this._defaultOptions, options);
+                if (!mergedOptions.title || !mergedOptions.href) {
+                    alert("failed to create the tab, the title and the href are required.");
+                    return;
+                }
                 var tabs = this.$tabs;
                 tabs.tabs('add',{
-                    title:title,
-                    href:href,
+                    title:mergedOptions.title,
+                    href:mergedOptions.href,
                     cache: true,
                     method: 'GET',
-                    closable:true,
-                    tools:[{
+                    closable:mergedOptions.closable,
+                    tools:mergedOptions.refreshable ? [{
                         iconCls:'icon-refresh',
                         handler:function(){
-                            tabs.tabs('getSelected').panel('refresh', href);
+                            setTimeout(function() {
+//                                var selectedTab = tabs.tabs('getSelected');
+//                                selectedTab.panel('refresh', selectedTab.panel('options').href);
+                                tabs.tabs('getSelected').panel('refresh');
+                            }, 0);
                         }
-                    }]
+                    }]: null
                 });
             }
         }

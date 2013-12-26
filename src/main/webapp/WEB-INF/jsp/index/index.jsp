@@ -25,13 +25,24 @@
         $(document).ready(function () {
 
             $("#addTab").on("click", function(e) {
-                $.egox.ui.tabs.createTab("Users", "users");
+                $.egox.ui.tabs.openTab("Users", "users");
             });
             $("#removeTab").on("click", function(e) {
-                $.egox.ui.tabs.createTab("Test1", "test1");
-                $.egox.ui.tabs.createTab("Test2", "test2");
-                $.egox.ui.tabs.createTab("Test3", "test3");
-                $.egox.ui.tabs.createTab("Test4", "test4");
+                $.egox.ui.tabs.openTab("Test1", "test1");
+                $.egox.ui.tabs.openTab({
+                    title:"Test2",
+                    href:"test2"
+                });
+                $.egox.ui.tabs.openTab({
+                    title:"Test3",
+                    href:"test3",
+                    closable: false
+                });
+                $.egox.ui.tabs.openTab({
+                    title:"Test4",
+                    href:"test4",
+                    refreshable: false
+                });
             });
             $("#activeTab").on("click", function(e) {
             });

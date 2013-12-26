@@ -23,41 +23,18 @@
          *	init page onLoad
          */
         $(document).ready(function () {
-            var tabs = $('#tt').tabs({
-                border:false,
-                tabHeight: 39,
-                fit: true,
-//                showHeader: false,
-                plain: true
-            });
-            tabs
-
-            tabs.tabs('add',{
-                title:'Welcome',
-                href:'welcome',
-                closable:true
-            });
 
             $("#addTab").on("click", function(e) {
-//                $.egox.ui.tabs.createTab();
-//                $.egox.ui.tabs.createTab({
-//                    label: '用户管理',
-//                    href: 'users'
-//                });
-                tabs.tabs('add',{    title:'New Tab',    content:'Tab Body',    closable:true,    tools:[{        iconCls:'icon-refresh',        handler:function(){            alert('refresh');        }    }]});
-
+                $.egox.ui.tabs.createTab("Users", "users");
             });
             $("#removeTab").on("click", function(e) {
-                tabs.tabs('add',{
-                    title:'Users',
-                    href:'users',
-                    closable:true
-                });
+                $.egox.ui.tabs.createTab("Test1", "test1");
+                $.egox.ui.tabs.createTab("Test2", "test2");
+                $.egox.ui.tabs.createTab("Test3", "test3");
+                $.egox.ui.tabs.createTab("Test4", "test4");
             });
             $("#activeTab").on("click", function(e) {
-//                $.egox.ui.tabs.activeTab(2);
             });
-            $.egox.ui.loaded();
         });
     </script>
 </head>
@@ -98,7 +75,7 @@
             <%--</div>--%>
 
             <div id="mainContainer">
-                <div id="tt" class="easyui-tabs" data-options="fit:true">
+                <div id="tabContainer" class="easyui-tabs" data-options="fit:true">
 
                 </div>
             </div>

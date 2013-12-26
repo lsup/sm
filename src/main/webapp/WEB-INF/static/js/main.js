@@ -357,6 +357,6 @@ $(document).ready(function() {
     $("input, textarea, select").not('.nostyle').uniform();
 
 
-//    $.egox.ui.tabs.init();
+    $.egox.ui.tabs.init();
 
 });

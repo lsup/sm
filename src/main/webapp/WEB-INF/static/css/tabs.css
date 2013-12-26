@@ -113,7 +113,7 @@
 }
 .tabs li a.tabs-close {
     width: 14px;
-    right: 5px;
+    right: 2px;
     opacity: 0.6;
     filter: alpha(opacity=60);
 }
@@ -127,6 +127,7 @@
     height: 14px;
     margin: 0;
     opacity: 0.6;
+    vertical-align: top;
     filter: alpha(opacity=60);
 }
 .tabs li a:hover.tabs-close,
@@ -266,7 +267,15 @@
     background: #F2F2F2 url('../images/tabs_icons.png') no-repeat -15px center;
 }
 .tabs li a.tabs-close {
-    background: url('../images/tabs_icons.png') no-repeat -34px center;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    *margin-right: .3em;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../images/glyphicons-halflings.png");
+    background-position: -312px 0;
+    background-repeat: no-repeat;
 }
 .tabs li a.tabs-inner:hover {
     background: #e6e6e6;

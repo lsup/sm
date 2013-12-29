@@ -26,6 +26,8 @@
 
             $("#addTab").on("click", function(e) {
                 $.egox.ui.tabs.openTab("Users", "users");
+                $.egox.ui.test.testAll();
+
             });
             $("#removeTab").on("click", function(e) {
                 $.egox.ui.tabs.openTab("Test1", "test1");

@@ -5,28 +5,31 @@ window.console || (console = {log: function() {}});
 var smOptions = {
     fixedWidth: false//activate fixed version with true
 };
-//window resize events
-$(window).resize(function() {
-    //get the window size
 
-    var wSize = $(window).width();
-    if (wSize > 980) {
-        $('.shortcuts.hided').removeClass('hided').attr("style", "");
-        $('.sidenav.hided').removeClass('hided').attr("style", "");
-    }
-
-    var size = "Window size is:" + $(window).width();
-    //console.log(size);
-});
-
-// 不知道干嘛用的
-$(window).load(function() {
-    var wHeight = $(window).height();
-    $('#sidebar.scrolled').css('height', wHeight - 63 + 'px');
-});
 
 // document ready function
 $(document).ready(function() {
+    $.egox.ui.tabs.init();
+
+    //window resize events
+    $(window).resize(function() {
+        //get the window size
+
+        var wSize = $(window).width();
+        if (wSize > 980) {
+            $('.shortcuts.hided').removeClass('hided').attr("style", "");
+            $('.sidenav.hided').removeClass('hided').attr("style", "");
+        }
+        $.egox.ui.tabs.resize();
+//    var size = "Window size is:" + $(window).width();
+        //console.log(size);
+    });
+
+    $(window).load(function() {
+        var wHeight = $(window).height();
+        $('#sidebar.scrolled').css('height', wHeight - 63 + 'px');
+    });
+
 
     //make template fixed width
     if (smOptions.fixedWidth) {
@@ -35,7 +38,6 @@ $(document).ready(function() {
         $('#wrapper').addClass('container');
     }
 
-    // 不知所云
     //localStorage.setItem('rtl', 0);
 
     //Disable certain links
@@ -138,6 +140,11 @@ $(document).ready(function() {
             } else {
                 $(this).siblings('ul.sub').slideDown(250).siblings().toggleClass('drop');
             }
+        } else {
+            event.preventDefault();
+            var href = $this.attr('href');
+            var title = $this.text();
+            $.egox.ui.tabs.openTab(title, href);
         }
     });
 
@@ -186,6 +193,7 @@ $(document).ready(function() {
                 if ($('#content-two').length) {
                     $('#content-two').css('margin-left', '0');
                 }
+                $.egox.ui.tabs.resize();
             }
 
         }
@@ -197,7 +205,6 @@ $(document).ready(function() {
 
         //left sidbar clicked
         if ($this.hasClass('leftbar')) {
-
             if ($(this).hasClass('hide-sidebar')) {
                 //show sidebar
                 $this.removeClass('hide-sidebar');
@@ -219,12 +226,10 @@ $(document).ready(function() {
             if ($('#content-two').length) {
                 $('#content-two').toggleClass('hided');
             }
-
         }
 
         //right sidebar clicked
         if ($this.hasClass('rightbar')) {
-
             if ($(this).hasClass('hide-sidebar')) {
                 //show sidebar
                 $this.removeClass('hide-sidebar');
@@ -247,7 +252,14 @@ $(document).ready(function() {
                 $('#content-two').toggleClass('hided-right');
             }
             $('.collapseBtn.rightbar').toggleClass('top shadow');
+
         }
+        var tempInterval = setInterval(function() {
+            $.egox.ui.tabs.resize();
+        }, 0);
+        setTimeout(function() {
+            clearInterval(tempInterval);
+        }, 500);
     });
 
 
@@ -355,8 +367,5 @@ $(document).ready(function() {
     //add class .nostyle if not want uniform to style field
     $('.search-btn').addClass('nostyle');//tell uniform to not style this element
     $("input, textarea, select").not('.nostyle').uniform();
-
-
-    $.egox.ui.tabs.init();
 
 });

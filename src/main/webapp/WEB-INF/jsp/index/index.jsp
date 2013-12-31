@@ -23,11 +23,9 @@
          *	init page onLoad
          */
         $(document).ready(function () {
-
             $("#addTab").on("click", function(e) {
                 $.egox.ui.tabs.openTab("Users", "users");
                 $.egox.ui.test.testAll();
-
             });
             $("#removeTab").on("click", function(e) {
                 $.egox.ui.tabs.openTab("Test1", "test1");
@@ -66,31 +64,8 @@
     <!--Body content-->
     <div id="content" class="clearfix">
         <div class="contentwrapper"><!--Content wrapper-->
-            <%--<div class="heading">--%>
-                <%--<div id="tabHeader">--%>
-                    <%--<ul>--%>
-                        <%--<li class="nav-left">--%>
-                            <%--<a><span class="icon-chevron-left"></span></a>--%>
-                        <%--</li>--%>
-                        <%--<li class="nav-right">--%>
-                            <%--<a><span class="icon-chevron-right"></span></a>--%>
-                        <%--</li>--%>
-                        <%--<li class="tab-active">--%>
-                            <%--<a href="#tab-1">欢迎</a>--%>
-                            <%--<ul class="single-li">--%>
-                                <%--<li>--%>
-                                    <%--<b class="icon-refresh"></b>--%>
-                                <%--</li>--%>
-                            <%--</ul>--%>
-                        <%--</li>--%>
-                    <%--</ul>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-
             <div id="mainContainer">
-                <div id="tabContainer" class="easyui-tabs" data-options="fit:true">
-
-                </div>
+                <div id="tabContainer" class="easyui-tabs" data-options="fit:true"></div>
             </div>
         </div><!-- End contentwrapper -->
     </div><!-- End #content -->

@@ -93,12 +93,24 @@ $.egox = {
                 });
                 $.egox.ui.loaded();
             },
-            openTab: function (title, href) {
-                if (title instanceof Object) {
-                    this._createTab(title);
+            resize: function() {
+                this.$tabs.tabs('resize');
+            },
+            openTab: function (param, href) {
+                var tabs = this.$tabs;
+                if (param instanceof Object) {
+                    if (tabs.tabs("exists", param.title)) {
+                        tabs.tabs("select", param.title);
+                        return;
+                    }
+                    this._createTab(param);
                 } else {
+                    if (tabs.tabs("exists", param)) {
+                        tabs.tabs("select", param);
+                        return;
+                    }
                     this._createTab({
-                        title: title,
+                        title: param,
                         href: href
                     })
                 }

@@ -486,6 +486,6 @@
 </table>
 <script>
     $(document).ready(function() {
-        $('#example').dataTable();
+//        $('#example').dataTable();
     });
 </script>
